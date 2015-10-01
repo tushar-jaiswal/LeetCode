@@ -39,10 +39,10 @@ public class Solution {
             
             for (int i=0; i < nums.Length; i++)
             {
-                //Check if for the current integer the we can find the desired integer amongst the valid integers stored in the dictionary
+                //Check if for the current integer we can find the desired integer amongst the valid integers stored in the dictionary
                 if(inputIntegers.TryGetValue((target-nums[i]), out index))
                 {
-                    if(index != i)
+                    if(index != i)//If twice of current number is the target but there isn't any duplicate number in the array, this check prevents false indexes from being returned
                     {
                         return new int[]{i+1, index+1};   
                     }
