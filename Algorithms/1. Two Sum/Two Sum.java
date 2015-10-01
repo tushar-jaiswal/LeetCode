@@ -29,7 +29,7 @@ public class Solution {
                 if(integerHashMap.containsKey(nums[i]) && nums[i]*2 ==  target)//If this number has already been added to the hashmap, check to see if adding these two numbers gets us the target
                 {
                     index = integerHashMap.get(target-nums[i]);
-                    if(index != i)
+                    if(index != i)//If twice of current number is the target and we came here because of some exception other than a duplicate number being added to hashmap right after adding nums[i] to hashmap, this check prevents false indexes from being returned
                     {
                         return new int[]{index+1, i+1};
                     }
