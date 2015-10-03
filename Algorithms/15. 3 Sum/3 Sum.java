@@ -20,7 +20,7 @@ public class Solution {
         
         Arrays.sort(nums);
         
-        for(int i=0; i<nums.length; i++)
+        for(int i=0; i<nums.length-2; i++)
         {
             int twoSum = target-nums[i];
             int j = i+1;
