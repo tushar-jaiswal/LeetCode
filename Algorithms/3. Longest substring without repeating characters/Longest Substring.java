@@ -13,29 +13,52 @@ public class Solution {
         //more concise for(char c: s.toCharArray()) - more concise but cost penalty to create a newly allocated character array whose length is the length of this string and whose contents are initialized to contain the character sequence represented by this string
         for(int i = 0; i < s.length(); i++ )
         {
-            if(substringChars.get(s.charAt(i)) != null)
+            if(longestLength < (s.substring(i)).length() + length)
+            {
+                if(substringChars.get(s.charAt(i)) != null)
+                {
+                    substringChars.clear();
+                    length = 1;
+                    substringChars.put(s.charAt(i), i);
+                }
+                else
+                {
+                    substringChars.put(s.charAt(i), i);
+                    length++;
+                    if(length > longestLength)
+                    {
+                        longestLength = length;   
+                    }
+                    
+                    String substring = s.substring(i+1);
+                    if(longestLength < substring.length())
+                    {
+                        HashMap<Character, Integer> substringChars2 = new HashMap<Character, Integer>();
+                        int length2 = 0;
+                        for (int j = i+1; j < substring.length(); j++)
+                        {
+                            if(substringChars2.get(s.charAt(i)) != null)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                substringChars2.put(s.charAt(i), i);
+                                length2++;
+                                if(length2 > longestLength)
+                                {
+                                    longestLength = length2;   
+                               }
+                            }
+                        }
+                    }
+                }
+            }
+            else
             {
                 substringChars.clear();
                 length = 1;
                 substringChars.put(s.charAt(i), i);
-            }
-            else
-            {
-                substringChars.put(s.charAt(i), i);
-                length++;
-                if(length > longestLength)
-                {
-                    longestLength = length;   
-                }
-                
-                if(i != s.length()-1)
-                {
-                    int substringLength = lengthOfLongestSubstring(s.substring(i+1));//Find any longer substrings that can be found from the next index
-                    if(substringLength > longestLength)
-                    {
-                        longestLength = substringLength;
-                    }
-                }
             }
         }
         return longestLength;
