@@ -40,7 +40,7 @@ public class Solution {
             for(i = 0; i < str.Length; i++)
             {
                 int digit;
-                if(tryParseCharToInt(str[i], out digit))
+                if(TryParseCharToInt(str[i], out digit))
                 { result = checked(result * 10 + digit); }
                 else
                 { break; }
@@ -56,7 +56,7 @@ public class Solution {
         return sign * result;
     }
     
-    private bool tryParseCharToInt(char c, out int i)
+    private bool TryParseCharToInt(char c, out int i)
     {
         i = -1;
         if(c == '0') {i = 0;}
