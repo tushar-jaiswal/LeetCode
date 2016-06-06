@@ -11,10 +11,10 @@ public class Solution {
         
         for(i = 0; i < s.Length; i++)
         {
-            first = romanCharToInt(s[i]);
+            first = RomanCharToInt(s[i]);
             if(i+1 < s.Length)
             {
-                second = romanCharToInt(s[i+1]);
+                second = RomanCharToInt(s[i+1]);
                 if(first < second)
                 {
                     result += second - first;
@@ -28,7 +28,7 @@ public class Solution {
         return result;
     }
     
-    private int romanCharToInt(char c)
+    private int RomanCharToInt(char c)
     {
         if(c == 'I') { return 1; }
         if(c == 'V') { return 5; }
