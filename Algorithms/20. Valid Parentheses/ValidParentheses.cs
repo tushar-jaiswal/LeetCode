@@ -32,17 +32,11 @@ public class Solution {
         switch (c)
         {
             case '{': return '}';
-                    break;
             case '}': return '{';
-                    break;
             case '[': return ']';
-                    break;
             case ']': return '[';
-                    break;
             case '(': return ')';
-                    break;
             case ')': return '(';
-                    break;
             default: return '0';
         }
     }
