@@ -12,8 +12,8 @@ Given input array nums = [3,2,2,3], val = 3
 Your function should return length = 2, with the first two elements of nums being 2.*/
 public class Solution {
     public int RemoveElement(int[] nums, int val) {
-        int i, j;
-        for(i=0, j=0; j<nums.Length; j++)
+        int i=0, j;
+        for(j=0; j<nums.Length; j++)
         {
            if(nums[j] != val)
            {
