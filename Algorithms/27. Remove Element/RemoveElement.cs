@@ -13,8 +13,6 @@ Your function should return length = 2, with the first two elements of nums bein
 public class Solution {
     public int RemoveElement(int[] nums, int val) {
         int i, j;
-        if(nums.Length == 0)
-        { return 0; }
         for(i=0, j=0; j<nums.Length; j++)
         {
            if(nums[j] != val)
