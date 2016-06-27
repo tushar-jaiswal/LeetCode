@@ -24,7 +24,7 @@ public class Solution {
         
         for(int i=2; i < n; i++)
         {
-            StringBuffer newSeq = new StringBuffer("");
+            StringBuilder newSeq = new StringBuilder("");
             prevNo = Character.getNumericValue(seq.charAt(0));
             count = 1;
             for(int j=1; j < seq.length(); j++)
