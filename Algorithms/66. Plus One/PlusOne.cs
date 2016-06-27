@@ -23,12 +23,8 @@ public class Solution {
             { return digits; }
         }
         
-        int[] result = new int[digits.Length+1];
-        result[0] = 1;
-        for(int i=0; i < digits.Length; i++)
-        {
-            result[i+1] = digits[i];
-        }
-        return result;
+        digits = new int[digits.Length+1];
+        digits[0] = 1;
+        return digits;
     }
 }
