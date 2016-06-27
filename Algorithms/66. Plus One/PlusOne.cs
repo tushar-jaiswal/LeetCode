@@ -3,18 +3,18 @@
 /*Given a non-negative number represented as an array of digits, plus one to the number.
 The digits are stored such that the most significant digit is at the head of the list.*/
 public class Solution {
-    public int[] plusOne(int[] digits) {
-        digits[digits.length-1] += 1;
-        if(digits[digits.length-1] == 10)
+    public int[] PlusOne(int[] digits) {
+        digits[digits.Length-1] += 1;
+        if(digits[digits.Length-1] == 10)
         {
-            digits[digits.length-1] = 0;
+            digits[digits.Length-1] = 0;
         }
         else
         { return digits; }
         
-        for(int i = digits.length-2; i >= 0; i--)
+        for(int i= digits.Length-2; i >= 0; i--)
         {
-            digits[i] += 1; 
+            digits[i] += 1;
             if(digits[i] == 10)
             {
                 digits[i] = 0;
@@ -23,9 +23,9 @@ public class Solution {
             { return digits; }
         }
         
-        int[] result = new int[digits.length + 1];
+        int[] result = new int[digits.Length+1];
         result[0] = 1;
-        for(int i = 0; i < digits.length; i++)
+        for(int i=0; i < digits.Length; i++)
         {
             result[i+1] = digits[i];
         }
