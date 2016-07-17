@@ -22,10 +22,10 @@ return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.*/
  */
 public class Solution {
     public boolean hasPathSum(TreeNode root, int sum) {
-        return pathTraversal(root, sum, 0);
+        return preOrderTraversal(root, sum, 0);
     }
     
-    private boolean pathTraversal(TreeNode node, int target, int sum)
+    private boolean preOrderTraversal(TreeNode node, int target, int sum)
     {
         if(node == null)
         {
@@ -38,11 +38,11 @@ public class Solution {
         }
         if(node.left != null)
         { 
-            if(pathTraversal(node.left, target, sum)) { return true; }
+            if(preOrderTraversal(node.left, target, sum)) { return true; }
         }
         if(node.right != null)
         {
-            if(pathTraversal(node.right, target, sum)) { return true; }
+            if(preOrderTraversal(node.right, target, sum)) { return true; }
         }
         return false;
     }
