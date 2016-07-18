@@ -15,14 +15,16 @@ public class Solution {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         List<Integer> previous = new ArrayList<Integer>(){};
         previous.add(1);
+        previous.add(1);
         
         if(numRows >= 1)
         { 
-            result.add(previous);
+            List<Integer> first = new ArrayList<Integer>(){};
+            first.add(1);
+            result.add(first);
         }
         if(numRows >= 2)
         { 
-            previous.add(1);
             result.add(previous); 
         }
         
