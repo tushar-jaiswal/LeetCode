@@ -20,9 +20,12 @@ public class Solution {
             binaryNumbers.Add(0);
         }
         
+        double multiplier = (Math.Pow(2, binaryNumbers.Count));
+        
         for(int i = 0; i < binaryNumbers.Count; i++)
         {
-            n += binaryNumbers[i] * (uint)(Math.Pow(2, binaryNumbers.Count - i - 1));
+            multiplier /= 2;
+            n += binaryNumbers[i] * (uint)(multiplier);
         }
         return n;
     }
