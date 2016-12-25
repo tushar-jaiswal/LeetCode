@@ -51,7 +51,7 @@ public class Solution {
         return true;
     }
     
-    ///<summary>This function returns the sum of the squares of the digits of the input argument</>
+    ///<summary>This function returns the sum of the squares of the digits of the input argument</summary>
     private int GetSumOfSquaredDigits(int n)
     {
         int sum = 0;
