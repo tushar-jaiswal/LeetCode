@@ -31,9 +31,9 @@ public class MyQueue {
         for(Integer i: st)
         {
             st2.addFirst(i);
-            st.removeFirst();
         }
         int value = st2.removeFirst();
+        st.clear();
         for(Integer i: st2)
         {
             st.addFirst(i);
