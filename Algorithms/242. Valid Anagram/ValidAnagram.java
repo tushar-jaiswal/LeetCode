@@ -15,6 +15,9 @@ What if the inputs contain unicode characters? How would you adapt your solution
 
 public class Solution {
     public boolean isAnagram(String s, String t) {
+        if(s.length() != t.length())
+        { return false; }
+        
         HashMap<Character, Integer> charCount = new HashMap<Character, Integer>();
         
         for(char c : s.toCharArray())
@@ -34,6 +37,10 @@ public class Solution {
             if(charCount.containsKey(c))
             {
                 charCount.put(c, charCount.get(c) - 1);
+                if(charCount.get(c) < 0)
+				{
+					return false;
+				}
             }
             else
             { return false; }
