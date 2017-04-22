@@ -13,22 +13,22 @@ Note:
 
 public class NumArray {
 
-    int[] Nums;
+    int[] sum;
     
     public NumArray(int[] nums) {
         if(nums.Length > 0)
         {
-            Nums = new int[nums.Length];
-            Nums[0] = nums[0];
+            sum = new int[nums.Length];
+            sum[0] = nums[0];
             for(int i = 1; i < nums.Length; i++)
             { 
-                Nums[i] = Nums[i-1] + nums[i]; 
+                sum[i] = sum[i-1] + nums[i]; 
             }
         }
     }
     
     public int SumRange(int i, int j) {
-        return (i > 0) ? (Nums[j] - Nums[i-1]) : Nums[j];
+        return (i > 0) ? (sum[j] - sum[i-1]) : sum[j];
     }
 }
 
