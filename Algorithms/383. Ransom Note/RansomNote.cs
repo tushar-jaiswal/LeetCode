@@ -14,7 +14,7 @@ public class Solution {
         Dictionary<char, int> ransomChars = new Dictionary<char, int>();
         Dictionary<char, int> magazineChars = new Dictionary<char, int>();
         
-        foreach(char c in ransomNote.ToCharArray())
+        foreach(char c in ransomNot)
         {
             if(!ransomChars.ContainsKey(c))
             {
@@ -26,7 +26,7 @@ public class Solution {
             }
         }
         
-        foreach(char c in magazine.ToCharArray())
+        foreach(char c in magazine)
         {
             if(!magazineChars.ContainsKey(c))
             {
