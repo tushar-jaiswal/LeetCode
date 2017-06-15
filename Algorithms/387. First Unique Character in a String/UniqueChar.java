@@ -1,5 +1,5 @@
 //Author: Tushar Jaiswal
-//Creation Date: 06/13/2017
+//Creation Date: 06/14/2017
 
 /*Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.
 
