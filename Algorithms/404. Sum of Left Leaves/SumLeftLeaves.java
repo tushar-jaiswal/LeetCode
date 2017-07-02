@@ -24,7 +24,7 @@ There are two left leaves in the binary tree, with values 9 and 15 respectively.
  */
 public class Solution {
     public int sumOfLeftLeaves(TreeNode root) {
-        return traverse(root, 0);
+        return (root == null) ? 0 : traverse(root, 0);
     }
     
     public int traverse(TreeNode node, int sum)
