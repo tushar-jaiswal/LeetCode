@@ -20,7 +20,7 @@ public class Solution {
         for(i = 1; i <= num1Len && i <= num2Len; i++)
         {
             sum = num1.charAt(num1Len - i) + num2.charAt(num2Len - i) + carry - (48 * 3);
-            result.insert(0, sum % 10);
+            result.append(sum % 10);
             carry = (sum / 10 == 1) ? '1' : '0';
         }
         
@@ -29,12 +29,12 @@ public class Solution {
             if(carry == '1')
             {
                 sum = num1.charAt(num1Len - i) + carry - (48 * 2);
-                result.insert(0, sum % 10);
+                result.append(sum % 10);
                 carry = (sum / 10 == 1) ? '1' : '0';
             }
             else
             {
-                result.insert(0, num1.charAt(num1Len - i));
+                result.append(num1.charAt(num1Len - i));
             }
             i++;
         }
@@ -43,21 +43,21 @@ public class Solution {
             if(carry == '1')
             {
                 sum = num2.charAt(num2Len - i) + carry - (48 * 2);
-                result.insert(0, sum % 10);
+                result.append(sum % 10);
                 carry = (sum / 10 == 1) ? '1' : '0';
             }
             else
             {
-                result.insert(0, num2.charAt(num2Len - i));
+                result.append(num2.charAt(num2Len - i));
             }
             i++;
         }
         
         if(carry == '1')
         {
-            result.insert(0, carry);
+            result.append(carry);
         }
         
-        return result.toString();
+        return result.reverse().toString();
     }
 }
