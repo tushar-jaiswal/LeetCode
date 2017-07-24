@@ -20,7 +20,7 @@ public class Solution {
         for(i = 1; i <= num1Len && i <= num2Len; i++)
         {
             sum = num1[num1Len - i] + num2[num2Len - i] + carry - (48 * 3);
-            result.Insert(0, sum % 10);
+            result.Append(sum % 10);
             carry = (sum / 10 == 1) ? '1' : '0';
         }
         
@@ -29,12 +29,12 @@ public class Solution {
             if(carry == '1')
             {
                 sum = num1[num1Len - i] + carry - (48 * 2);
-                result.Insert(0, sum % 10);
+                result.Append(sum % 10);
                 carry = (sum / 10 == 1) ? '1' : '0';
             }
             else
             {
-                result.Insert(0, num1[num1Len - i]);
+                result.Append(num1[num1Len - i]);
             }
             i++;
         }
@@ -43,21 +43,23 @@ public class Solution {
             if(carry == '1')
             {
                 sum = num2[num2Len - i] + carry - (48 * 2);
-                result.Insert(0, sum % 10);
+                result.Append(sum % 10);
                 carry = (sum / 10 == 1) ? '1' : '0';
             }
             else
             {
-                result.Insert(0, num2[num2Len - i]);
+                result.Append(num2[num2Len - i]);
             }
             i++;
         }
         
         if(carry == '1')
         {
-            result.Insert(0, carry);
+            result.Append(carry);
         }
         
-        return result.ToString();
+        char[] charArray = result.ToString().ToCharArray();
+        Array.Reverse(charArray);
+        return new string( charArray );
     }
 }
