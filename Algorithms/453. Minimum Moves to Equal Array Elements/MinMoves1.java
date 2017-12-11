@@ -14,21 +14,13 @@ class Solution {
         if(nums.length == 0)
         { return 0; }
         
-        int minIndex = 0;
+        int min = nums[0];
         int moves = 0;
-        for(int i = 1; i < nums.length; i++)
-        {
-            if(nums[i] < nums[minIndex])
-            { minIndex = i; }
-        }
         
-        for(int i = 0; i < nums.length; i++)
-        {
-            if(i != minIndex)
-            {
-                moves += nums[i] - nums[minIndex];
-            }
-        }
+        for(int i : nums)
+        { min = Math.min(i, min); }
+        for(int i : nums)
+        { moves += i - min; }
         
         return moves;
     }
