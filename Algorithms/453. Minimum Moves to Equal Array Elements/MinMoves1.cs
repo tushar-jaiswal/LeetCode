@@ -14,21 +14,12 @@ public class Solution {
         if(nums.Length == 0)
         { return 0; }
         
-        int minIndex = 0;
+        int min = nums[0];
         int moves = 0;
-        for(int i = 1; i < nums.Length; i++)
-        {
-            if(nums[i] < nums[minIndex])
-            { minIndex = i; }
-        }
-        
-        for(int i = 0; i < nums.Length; i++)
-        {
-            if(i != minIndex)
-            {
-                moves += nums[i] - nums[minIndex];
-            }
-        }
+        foreach(int i in nums)
+        { min = Math.Min(i, min); }
+        foreach(int i in nums)
+        { moves += i - min; }
         
         return moves;
     }
