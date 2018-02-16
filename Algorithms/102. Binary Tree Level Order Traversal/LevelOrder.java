@@ -28,28 +28,24 @@ return its level order traversal as:
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> result = new LinkedList<List<Integer>>();
-        Queue<TreeNode> q1 = new LinkedList<TreeNode>();
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
         
         if(root != null)
-        { q1.add(root); }
+        { queue.add(root); }
         
-        while(!q1.isEmpty())
+        while(!queue.isEmpty())
         {
             List<Integer> levelNodes = new LinkedList<Integer>();
-            Queue<TreeNode> q2 = new LinkedList<TreeNode>();
-            while(!q1.isEmpty())
-            {
-                q2.add(q1.remove());
-            }
+            int levelSize = queue.size();
             
-            while(!q2.isEmpty())
+            for(int i = 0; i < levelSize; i++)
             {
-                TreeNode node = q2.remove();
+                TreeNode node = queue.remove();
                 levelNodes.add(node.val);
                 if(node.left != null)
-                { q1.add(node.left); }
+                { queue.add(node.left); }
                 if(node.right != null)
-                { q1.add(node.right); }
+                { queue.add(node.right); }
             }
             result.add(levelNodes);
         }
