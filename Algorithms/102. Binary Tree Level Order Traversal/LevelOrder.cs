@@ -28,28 +28,23 @@ return its level order traversal as:
 public class Solution {
     public IList<IList<int>> LevelOrder(TreeNode root) {
         List<IList<int>> result = new List<IList<int>>();
-        Queue<TreeNode> q1 = new Queue<TreeNode>();
+        Queue<TreeNode> queue = new Queue<TreeNode>();
         
         if(root != null)
-        { q1.Enqueue(root); }
+        { queue.Enqueue(root); }
         
-        while(q1.Count != 0)
+        while(queue.Count != 0)
         {
             List<int> levelNodes = new List<int>();
-            Queue<TreeNode> q2 = new Queue<TreeNode>();
-            while(q1.Count != 0)
+            int levelSize = queue.Count;
+            for(int i = 0; i < levelSize; i++)
             {
-                q2.Enqueue(q1.Dequeue());
-            }
-            
-            while(q2.Count != 0)
-            {
-                TreeNode node = q2.Dequeue();
+                TreeNode node = queue.Dequeue();
                 levelNodes.Add(node.val);
                 if(node.left != null)
-                { q1.Enqueue(node.left); }
+                { queue.Enqueue(node.left); }
                 if(node.right != null)
-                { q1.Enqueue(node.right); }
+                { queue.Enqueue(node.right); }
             }
             result.Add(levelNodes);
         }
