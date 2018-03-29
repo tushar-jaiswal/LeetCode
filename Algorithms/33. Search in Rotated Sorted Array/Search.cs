@@ -32,6 +32,5 @@ public class Solution {
             { return Helper(nums, target, mid + 1, right); }
             return Helper(nums, target, left, mid - 1);
         }
-        return -1;
     }
 }
