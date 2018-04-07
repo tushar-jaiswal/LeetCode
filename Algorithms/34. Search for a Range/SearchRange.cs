@@ -1,5 +1,5 @@
 //Author: Tushar Jaiswal
-//Creation Date: 04/01/2018
+//Creation Date: 04/07/2018
 
 /*Given an array of integers sorted in ascending order, find the starting and ending position of a given target value.
 Your algorithm's runtime complexity must be in the order of O(log n).
@@ -12,12 +12,12 @@ return [3, 4].*/
 public class Solution {
     public int[] SearchRange(int[] nums, int target) {
         int[] range = new int[2];
-        range[0] = binarySearchLeft(nums, target);
-        range[1] = binarySearchRight(nums, target);
+        range[0] = BinarySearchLeft(nums, target);
+        range[1] = BinarySearchRight(nums, target);
         return range;
     }
     
-    public int binarySearchLeft(int[] nums, int target)
+    public int BinarySearchLeft(int[] nums, int target)
     {
         int left = 0, right = nums.Length - 1;
         while(left + 1 < right)
@@ -41,7 +41,7 @@ public class Solution {
         return -1;
     }
     
-    public int binarySearchRight(int[] nums, int target)
+    public int BinarySearchRight(int[] nums, int target)
     {
         int left = 0, right = nums.Length - 1;
         while(left + 1 < right)
