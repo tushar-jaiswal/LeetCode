@@ -15,36 +15,18 @@ public class Solution {
         for(int i = 0; i < numbers.Length; i++)
         {
             int target2 = target - numbers[i];
-            int index2 = BinarySearch(numbers, target2, i);
-            if(index2 >= 0)
-            { return new int[]{i + 1, index2 + 1}; }
+            int low = i + 1, high = numbers.Length - 1;
+            while(low <= high)
+            {
+                int mid = low + (high - low) / 2;
+                if(numbers[mid] == target2)
+                { return new int[]{i + 1, mid + 1}; }
+                else if(target2 < numbers[mid])
+                { high = mid - 1; }
+                else
+                { low = mid + 1; }
+            }
         }
         return new int[]{ -1, -1};
-    }
-    
-    private int BinarySearch(int[] nums, int target, int index1)
-    {
-        int low = 0, high = nums.Length - 1;
-        while(low <= high)
-        {
-            int mid = low + (high - low) / 2;
-            if(nums[mid] == target)
-            { 
-                if(mid != index1)
-                { return mid; }
-                else
-                {
-                    if(mid + 1 < nums.Length && nums[mid + 1] == target)
-                    { return mid + 1; }
-                    if(mid - 1 >= 0 && nums[mid - 1] == target)
-                    { return mid - 1; }
-                }
-            }
-            else if(target < nums[mid])
-            { high = mid - 1; }
-            else
-            { low = mid + 1; }
-        }
-        return -1;
     }
 }
