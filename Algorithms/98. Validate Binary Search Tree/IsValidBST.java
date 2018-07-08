@@ -34,7 +34,7 @@ Explanation: The input is: [5,1,4,null,null,3,6]. The root node's value
  * }
  */
 class Solution {
-    TreeNode lastNode;
+    private TreeNode lastNode;
     public boolean isValidBST(TreeNode root) {
         if(root != null)
         {
