@@ -38,6 +38,12 @@ This tree is also valid:
  */
 public class Solution {
     public TreeNode InsertIntoBST(TreeNode root, int val) {
+        if(root == null)
+        { 
+            root = new TreeNode(val); 
+            return root;
+        }
+        
         TreeNode curr = root;
         while(true)
         {
