@@ -31,20 +31,16 @@ public class Codec {
         
         while(!queue.isEmpty())
         {
-            int levelSize = queue.size();
-            for(int i = 0; i < levelSize; i++)
+            TreeNode node = queue.remove();
+            if(node != null)
             {
-                TreeNode node = queue.remove();
-                if(node != null)
-                {
-                    sb.append(node.val + ",");
-                    queue.add(node.left);
-                    queue.add(node.right);
-                }
-                else
-                {
-                    sb.append("null,");
-                }
+                sb.append(node.val + ",");
+                queue.add(node.left);
+                queue.add(node.right);
+            }
+            else
+            {
+                sb.append("null,");
             }
         }
         return sb.toString();
@@ -74,9 +70,8 @@ public class Codec {
                 { currentAncestorNode.left = null; }
                 else
                 { 
-                    TreeNode node = new TreeNode(Integer.parseInt(val));
-                    currentAncestorNode.left = node; 
-                    ancestorNodes.add(node);
+                    currentAncestorNode.left = new TreeNode(Integer.parseInt(val));
+                    ancestorNodes.add(currentAncestorNode.left);
                 }
                 
                 val = nodes.remove();
@@ -84,9 +79,8 @@ public class Codec {
                 { currentAncestorNode.right = null; }
                 else
                 {
-                    TreeNode node = new TreeNode(Integer.parseInt(val));
-                    currentAncestorNode.right = node; 
-                    ancestorNodes.add(node);
+                    currentAncestorNode.right = new TreeNode(Integer.parseInt(val));
+                    ancestorNodes.add(currentAncestorNode.right);
                 }
             }
         }
