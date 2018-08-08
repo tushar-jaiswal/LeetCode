@@ -31,20 +31,16 @@ public class Codec {
         
         while(queue.Count != 0)
         {
-            int levelSize = queue.Count;
-            for(int i = 0; i < levelSize; i++)
+            TreeNode node = queue.Dequeue();
+            if(node != null)
             {
-                TreeNode node = queue.Dequeue();
-                if(node != null)
-                {
-                    sb.Append(node.val + ",");
-                    queue.Enqueue(node.left);
-                    queue.Enqueue(node.right);
-                }
-                else
-                {
-                    sb.Append("null,");
-                }
+                sb.Append(node.val + ",");
+                queue.Enqueue(node.left);
+                queue.Enqueue(node.right);
+            }
+            else
+            {
+                sb.Append("null,");
             }
         }
         return sb.ToString();
@@ -74,9 +70,8 @@ public class Codec {
                 { currentAncestorNode.left = null; }
                 else
                 { 
-                    TreeNode node = new TreeNode(int.Parse(val));
-                    currentAncestorNode.left = node; 
-                    ancestorNodes.Enqueue(node);
+                    currentAncestorNode.left = new TreeNode(int.Parse(val));
+                    ancestorNodes.Enqueue(currentAncestorNode.left);
                 }
                 
                 val = nodes.Dequeue();
@@ -84,9 +79,8 @@ public class Codec {
                 { currentAncestorNode.right = null; }
                 else
                 {
-                    TreeNode node = new TreeNode(int.Parse(val));
-                    currentAncestorNode.right = node; 
-                    ancestorNodes.Enqueue(node);
+                    currentAncestorNode.right = new TreeNode(int.Parse(val));
+                    ancestorNodes.Enqueue(currentAncestorNode.right);
                 }
             }
         }
