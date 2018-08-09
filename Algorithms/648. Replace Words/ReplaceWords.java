@@ -58,7 +58,7 @@ class Trie {
         curr.isWord = true;
     }
     
-    /** Returns if the word is in the trie. */
+    /** Returns if the root of the word is in the trie. */
     public String search(String word) {
         TrieNode curr = root;
         StringBuilder sb = new StringBuilder();
