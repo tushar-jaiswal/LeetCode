@@ -42,14 +42,9 @@ public class MapSum {
     
     public int GetSumAtNode(TrieNode curr)
     {
-        if(curr == null)
-        { return 0; }
         int sum = curr.val;
-        
         foreach(TrieNode child in curr.children.Values)
-        {
-            sum += GetSumAtNode(child);
-        }
+        { sum += GetSumAtNode(child); }
         return sum;
     }
 }
