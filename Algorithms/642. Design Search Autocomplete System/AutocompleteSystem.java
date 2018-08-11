@@ -48,9 +48,13 @@ Please use double-quote instead of single-quote when you write test cases even f
 Please remember to RESET your class variables declared in class AutocompleteSystem, as static/class variables are persisted across multiple test cases. Please see herefor more details.*/
 
 /*
-This solution's runtime performance
-O(1) for getting autocomplete result
-O(len(sentence)) for adding a sentence either on initialization or when completing input with '#'
+This solution's 
+Runtime complexity
+	O(1) for getting autocomplete result
+	O(len(sentence)) for adding a sentence either on initialization or when completing input with '#'
+
+Space complexity
+	O(nSumofLengthofAllSentences)
 */
 
 import java.util.*;
