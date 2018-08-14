@@ -45,7 +45,7 @@ public class Solution {
         }
         
         StringBuilder sb = new StringBuilder();
-        for(int i = buckets.Length - 1; i >= 0; i--)
+        for(int i = buckets.Length - 1; i > 0; i--)
         {
             if(buckets[i] != null)
             {
