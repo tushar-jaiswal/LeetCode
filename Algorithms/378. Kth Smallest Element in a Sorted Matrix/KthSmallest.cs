@@ -21,14 +21,14 @@ public class Solution {
         { list.Add(matrix[0,col], new Tuple<int, int>(0, col)); }
         for(; k > 1; k--)
         {
-            int x = list.First().Value.Item1;
-            int y = list.First().Value.Item2;
+            int x = list.Values[0].Item1;
+            int y = list.Values[0].Item2;
             list.RemoveAt(0);
             if(x == matrix.GetLength(0) - 1)
             { continue; }
             list.Add(matrix[x + 1, y], new Tuple<int, int>(x + 1, y));
         }
-        return list.First().Key;
+        return list.Keys[0];
     }
 }
 
