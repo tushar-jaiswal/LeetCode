@@ -27,13 +27,13 @@ class Solution {
         if(m == 0 || n == 0)
         { return result; }            
         PriorityQueue<Element> pQueue = new PriorityQueue<Element>();
-        for(int j = 0; j < nums2.length; j++)
+        for(int j = 0; j < n; j++)
         { pQueue.offer(new Element(nums1[0] + nums2[j], 0, j)); }
         for(int i = 0; i < Math.min(k, m * n); i++)
         {
             Element e = pQueue.poll();
             result.add(new int[]{nums1[e.x], nums2[e.y]});
-            if(e.x == nums1.length - 1)
+            if(e.x == m - 1)
             { continue; }
             pQueue.offer(new Element(nums1[e.x + 1] + nums2[e.y], e.x + 1, e.y)); 
         }
