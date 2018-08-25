@@ -35,19 +35,19 @@ twitter.getNewsFeed(1);*/
 
 public class Twitter {
     Dictionary<int, List<int>> users;
-    SortedList<DateTime, Tuple<int, int>> tweets;
+    LinkedList<Tuple<int, int>> tweets;
     
     /** Initialize your data structure here. */
     public Twitter() {
         users = new Dictionary<int, List<int>>();
-        tweets = new SortedList<DateTime, Tuple<int, int>>(new DescComparer());
+        tweets = new LinkedList<Tuple<int, int>>();
     }
     
     /** Compose a new tweet. */
     public void PostTweet(int userId, int tweetId) {
         if(!users.ContainsKey(userId))
         { users.Add(userId, new List<int>()); }
-        tweets.Add(DateTime.Now, new Tuple<int, int>(userId, tweetId));
+        tweets.AddFirst(new Tuple<int, int>(userId, tweetId));
     }
     
     /** Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent. */
@@ -55,7 +55,7 @@ public class Twitter {
         List<int> topTweets = new List<int>();
         if(!users.ContainsKey(userId))
         { return topTweets;}
-        foreach(Tuple<int, int> tweet in tweets.Values)
+        foreach(Tuple<int, int> tweet in tweets)
         {
             if(userId == tweet.Item1 || users[userId].Contains(tweet.Item1))
             { topTweets.Add(tweet.Item2); }
@@ -78,14 +78,6 @@ public class Twitter {
         { users[followerId].Remove(followeeId); }
     }
 }
-
-public class DescComparer : IComparer<DateTime>
-{
-    public int Compare(DateTime a, DateTime b)
-    {
-        return b.CompareTo(a);
-    }
-} 
 
 /**
  * Your Twitter object will be instantiated and called as such:
