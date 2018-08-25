@@ -35,35 +35,33 @@ twitter.getNewsFeed(1);*/
 
 class Twitter {
     HashMap<Integer, List<Integer>> users;
-    List<Tweet> tweets;
-    int count = 0;
+    LinkedList<Map.Entry<Integer, Integer>> tweets;
 
     /** Initialize your data structure here. */
     public Twitter() {
         users = new HashMap<Integer, List<Integer>>();
-        tweets = new ArrayList<Tweet>();
+        tweets = new LinkedList<Map.Entry<Integer, Integer>>();
     }
     
     /** Compose a new tweet. */
     public void postTweet(int userId, int tweetId) {
         if(!users.containsKey(userId))
         { users.put(userId, new ArrayList<Integer>()); }
-        tweets.add(new Tweet(userId, tweetId, count++));
+        tweets.addFirst(new java.util.AbstractMap.SimpleEntry<Integer, Integer>(userId, tweetId));
     }
     
     /** Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent. */
     public List<Integer> getNewsFeed(int userId) {
         List<Integer> topTweets = new ArrayList<Integer>();
-        PriorityQueue<Tweet> pq = new PriorityQueue<Tweet>();
         if(!users.containsKey(userId))
         { return topTweets;}
-        for(Tweet tweet : tweets)
+        for(Map.Entry<Integer, Integer> tweet : tweets)
         {
-            if(userId == tweet.user || users.get(userId).contains(tweet.user))
-            { pq.offer(tweet); }
+            if(userId == tweet.getKey() || users.get(userId).contains(tweet.getKey()))
+            { topTweets.add(tweet.getValue()); }
+            if(topTweets.size() == 10)
+            { break; }
         }
-        while(!pq.isEmpty() && topTweets.size() < 10)
-        { topTweets.add(pq.poll().tweet); }
         return topTweets;
     }
     
@@ -78,26 +76,6 @@ class Twitter {
     public void unfollow(int followerId, int followeeId) {
         if(users.containsKey(followerId))
         { users.get(followerId).remove((Integer)followeeId); }
-    }
-}
-
-class Tweet implements Comparable<Tweet>
-{
-    int user;
-    int tweet;
-    int time;
-    
-    public Tweet(int userId, int tweetId, int time)
-    {
-        this.user = userId;
-        this.tweet = tweetId;
-        this.time = time;
-    }
-    
-    @Override
-    public int compareTo(Tweet b)
-    {
-        return b.time - this.time;
     }
 }
 
