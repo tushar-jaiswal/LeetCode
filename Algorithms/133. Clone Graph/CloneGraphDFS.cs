@@ -34,19 +34,18 @@ public class Solution {
         UndirectedGraphNode clone = null;
         if(node != null)
         {
-            if(!nodes.ContainsKey(node.label))
+            if(nodes.ContainsKey(node.label))
             {
-                nodes.Add(node.label, new UndirectedGraphNode(node.label));                 
+                return nodes[node.label];
+            }
+            else
+            {
+                nodes.Add(node.label, new UndirectedGraphNode(node.label));
             }
             clone = nodes[node.label];
             foreach(UndirectedGraphNode neighbor in node.neighbors)
             {
-                if(!nodes.ContainsKey(neighbor.label))
-                {
-                    nodes.Add(neighbor.label, new UndirectedGraphNode(neighbor.label));
-                    CloneGraph(neighbor);
-                }
-                clone.neighbors.Add(nodes[neighbor.label]);
+                clone.neighbors.Add(CloneGraph(neighbor));
             }
         }
         return clone;

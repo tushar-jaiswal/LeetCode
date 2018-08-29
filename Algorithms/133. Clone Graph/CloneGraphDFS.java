@@ -34,19 +34,18 @@ public class Solution {
         UndirectedGraphNode clone = null;
         if(node != null)
         {
-            if(!nodes.containsKey(node.label))
+            if(nodes.containsKey(node.label))
+            {
+                return nodes.get(node.label);
+            }
+            else
             {
                 nodes.put(node.label, new UndirectedGraphNode(node.label));                 
             }
             clone = nodes.get(node.label);
             for(UndirectedGraphNode neighbor : node.neighbors)
             {
-                if(!nodes.containsKey(neighbor.label))
-                {
-                    nodes.put(neighbor.label, new UndirectedGraphNode(neighbor.label));
-                    cloneGraph(neighbor);
-                }
-                clone.neighbors.add(nodes.get(neighbor.label));
+                clone.neighbors.add(cloneGraph(neighbor));
             }
         }
         return clone;
