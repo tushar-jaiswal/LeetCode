@@ -51,6 +51,8 @@ class Solution {
         {
             if(encountered.contains(i))
             { return false; }
+            if(visited.contains(i))
+            { return true; }
             if(graph.containsKey(i))
             { 
                 if(!isPossible(graph, i, new HashSet<Integer>(encountered)))
