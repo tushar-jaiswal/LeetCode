@@ -22,9 +22,10 @@ The input prerequisites is a graph represented by a list of edges, not adjacency
 You may assume that there are no duplicate edges in the input prerequisites.*/
 
 public class Solution {
-    HashSet<int> visited = new HashSet<int>();
+    bool[] visited;
     
     public bool CanFinish(int numCourses, int[,] prerequisites) {
+        visited = new bool[numCourses];
         Dictionary<int, List<int>> graph = new Dictionary<int, List<int>>();
         for(int i = 0; i < prerequisites.GetLength(0); i++)
         {
@@ -34,28 +35,30 @@ public class Solution {
         }
         foreach(int i in graph.Keys)
         {
-            if(!visited.Contains(i))
+            if(!visited[i])
             {
-                if(!isPossible(graph, i, new HashSet<int>()))
+                if(!isPossible(graph, i, new bool[numCourses]))
                 { return false; }
             }
         }
         return true;
     }
     
-    private bool isPossible(Dictionary<int, List<int>> graph, int node, HashSet<int> encountered)
+    private bool isPossible(Dictionary<int, List<int>> graph, int node, bool[] encountered)
     {
-        visited.Add(node);
-        encountered.Add(node);
+        visited[node] = true;
+        encountered[node] = true;
         foreach(int i in graph[node])
         {
-            if(encountered.Contains(i))
+            if(encountered[i])
             { return false; }
-            if(visited.Contains(i))
+            if(visited[i])
             { return true; }
             if(graph.ContainsKey(i))
             { 
-                if(!isPossible(graph, i, new HashSet<int>(encountered)))
+                bool[] copy = new bool[encountered.Length];
+                Array.Copy(encountered, copy, encountered.Length);
+                if(!isPossible(graph, i, copy))
                 { return false; }
             }
         }

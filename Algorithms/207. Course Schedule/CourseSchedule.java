@@ -22,9 +22,10 @@ The input prerequisites is a graph represented by a list of edges, not adjacency
 You may assume that there are no duplicate edges in the input prerequisites.*/
 
 class Solution {
-    HashSet<Integer> visited = new HashSet<Integer>();
+    boolean[] visited;
     
     public boolean canFinish(int numCourses, int[][] prerequisites) {
+        visited = new boolean[numCourses];
         HashMap<Integer, List<Integer>> graph = new HashMap<Integer, List<Integer>>();
         for(int i = 0; i < prerequisites.length; i++)
         {
@@ -34,28 +35,28 @@ class Solution {
         }
         for(int i : graph.keySet())
         {
-            if(!visited.contains(i))
+            if(!visited[i])
             {
-                if(!isPossible(graph, i, new HashSet<Integer>()))
+                if(!isPossible(graph, i, new boolean[numCourses]))
                 { return false; }
             }
         }
         return true;
     }
     
-    private boolean isPossible(HashMap<Integer, List<Integer>> graph, int node, HashSet<Integer> encountered)
+    private boolean isPossible(HashMap<Integer, List<Integer>> graph, int node, boolean[] encountered)
     {
-        visited.add(node);
-        encountered.add(node);
+        visited[node] = true;
+        encountered[node] = true;
         for(int i : graph.get(node))
         {
-            if(encountered.contains(i))
+            if(encountered[i])
             { return false; }
-            if(visited.contains(i))
+            if(visited[i])
             { return true; }
             if(graph.containsKey(i))
             { 
-                if(!isPossible(graph, i, new HashSet<Integer>(encountered)))
+                if(!isPossible(graph, i, encountered))
                 { return false; }
             }
         }
