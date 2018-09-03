@@ -54,7 +54,7 @@ class Solution {
             if(encountered[course])
             { return false; }
             if(visited[course])
-            { return true; }
+            { continue; }
             if(graph[course] != null)
             { 
                 boolean[] copy = new boolean[encountered.length];

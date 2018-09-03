@@ -53,7 +53,7 @@ public class Solution {
             if(encountered[i])
             { return false; }
             if(visited[i])
-            { return true; }
+            { continue; }
             if(graph[i] != null)
             { 
                 bool[] copy = new bool[encountered.Length];

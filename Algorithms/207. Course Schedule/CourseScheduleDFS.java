@@ -53,7 +53,7 @@ class Solution {
             if(encountered[i])
             { return false; }
             if(visited[i])
-            { return true; }
+            { continue; }
             if(graph.containsKey(i))
             { 
                 boolean[] copy = new boolean[encountered.length];

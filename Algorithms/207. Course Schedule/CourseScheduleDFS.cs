@@ -53,7 +53,7 @@ public class Solution {
             if(encountered[i])
             { return false; }
             if(visited[i])
-            { return true; }
+            { continue; }
             if(graph.ContainsKey(i))
             { 
                 bool[] copy = new bool[encountered.Length];
