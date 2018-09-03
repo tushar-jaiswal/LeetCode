@@ -29,9 +29,9 @@ class Solution {
         List[] graph = new List[numCourses];
         for(int i = 0; i < prerequisites.length; i++)
         {
-            if(graph[prerequisites[i][0]] == null)
-            { graph[prerequisites[i][0]] = new ArrayList<Integer>(); }
-            graph[prerequisites[i][0]].add(prerequisites[i][1]);
+            if(graph[prerequisites[i][1]] == null)
+            { graph[prerequisites[i][1]] = new ArrayList<Integer>(); }
+            graph[prerequisites[i][1]].add(prerequisites[i][0]);
         }
         for(int i = 0; i < numCourses; i++)
         {
@@ -57,7 +57,9 @@ class Solution {
             { return true; }
             if(graph[course] != null)
             { 
-                if(!isPossible(graph, course, encountered))
+                boolean[] copy = new boolean[encountered.length];
+                System.arraycopy(encountered, 0, copy, 0, encountered.length);
+                if(!isPossible(graph, course, copy))
                 { return false; }
             }
         }

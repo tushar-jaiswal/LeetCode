@@ -29,9 +29,9 @@ public class Solution {
         Dictionary<int, List<int>> graph = new Dictionary<int, List<int>>();
         for(int i = 0; i < prerequisites.GetLength(0); i++)
         {
-            if(!graph.ContainsKey(prerequisites[i, 0]))
-            { graph.Add(prerequisites[i, 0], new List<int>()); }
-            graph[prerequisites[i, 0]].Add(prerequisites[i, 1]);
+            if(!graph.ContainsKey(prerequisites[i, 1]))
+            { graph.Add(prerequisites[i, 1], new List<int>()); }
+            graph[prerequisites[i, 1]].Add(prerequisites[i, 0]);
         }
         foreach(int i in graph.Keys)
         {

@@ -29,9 +29,9 @@ class Solution {
         HashMap<Integer, List<Integer>> graph = new HashMap<Integer, List<Integer>>();
         for(int i = 0; i < prerequisites.length; i++)
         {
-            if(!graph.containsKey(prerequisites[i][0]))
-            { graph.put(prerequisites[i][0], new ArrayList<Integer>()); }
-            graph.get(prerequisites[i][0]).add(prerequisites[i][1]);
+            if(!graph.containsKey(prerequisites[i][1]))
+            { graph.put(prerequisites[i][1], new ArrayList<Integer>()); }
+            graph.get(prerequisites[i][1]).add(prerequisites[i][0]);
         }
         for(int i : graph.keySet())
         {
@@ -56,7 +56,9 @@ class Solution {
             { return true; }
             if(graph.containsKey(i))
             { 
-                if(!isPossible(graph, i, encountered))
+                boolean[] copy = new boolean[encountered.length];
+                System.arraycopy(encountered, 0, copy, 0, encountered.length);
+                if(!isPossible(graph, i, copy))
                 { return false; }
             }
         }

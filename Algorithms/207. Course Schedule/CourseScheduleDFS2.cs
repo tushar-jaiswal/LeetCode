@@ -29,9 +29,9 @@ public class Solution {
         List<int>[] graph = new List<int>[numCourses];
         for(int i = 0; i < prerequisites.GetLength(0); i++)
         {
-            if(graph[prerequisites[i, 0]] == null)
-            { graph[prerequisites[i, 0]] = new List<int>(); }
-            graph[prerequisites[i, 0]].Add(prerequisites[i, 1]);
+            if(graph[prerequisites[i, 1]] == null)
+            { graph[prerequisites[i, 1]] = new List<int>(); }
+            graph[prerequisites[i, 1]].Add(prerequisites[i, 0]);
         }
         for(int i  = 0; i < numCourses; i++)
         {
