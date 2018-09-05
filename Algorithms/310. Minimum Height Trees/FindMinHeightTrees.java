@@ -46,33 +46,25 @@ class Solution {
             degree[edges[i][1]]++;
         }
         List<Integer> result = new ArrayList<Integer>();
-        Queue<Integer> queue = new LinkedList<Integer>();
-        
         for(int i = 0; i < n; i++)
         { 
             if(degree[i] == 1)
-            { queue.offer(i); }
+            { result.add(i); }
         }
-        while(!queue.isEmpty())
+        while(n > 2)
         {
-            if(n <= 2)
+            n -= result.size();
+            List<Integer> newResult = new ArrayList<Integer>();
+            for(int node : result)
             {
-                while(!queue.isEmpty())
-                { result.add(queue.poll()); }
-                break;
-            }
-            int size = queue.size();
-            for(int i = 0; i < size; i++)
-            {
-                int node = queue.poll();
                 for(int curr : graph.get(node))
                 {
                     degree[curr]--;
                     if(degree[curr] == 1)
-                    { queue.offer(curr); }
+                    { newResult.add(curr); }
                 }
             }
-            n -= size;
+            result = newResult;
         }
         if(result.size() == 0)
         { result.add(0); }

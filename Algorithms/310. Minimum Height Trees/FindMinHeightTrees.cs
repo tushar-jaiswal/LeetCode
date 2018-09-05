@@ -46,33 +46,25 @@ public class Solution {
             degree[edges[i, 1]]++;
         }
         List<int> result = new List<int>();
-        Queue<int> queue = new Queue<int>();
-        
         for(int i = 0; i < n; i++)
         { 
             if(degree[i] == 1)
-            { queue.Enqueue(i); }
+            { result.Add(i); }
         }
-        while(queue.Count != 0)
+        while(n > 2)
         {
-            if(n <= 2)
+            n -= result.Count;
+            List<int> newResult = new List<int>();
+            foreach(int node in result)
             {
-                while(queue.Count != 0)
-                { result.Add(queue.Dequeue()); }
-                break;
-            }
-            int size = queue.Count;
-            for(int i = 0; i < size; i++)
-            {
-                int node = queue.Dequeue();
                 foreach(int curr in graph[node])
                 {
                     degree[curr]--;
                     if(degree[curr] == 1)
-                    { queue.Enqueue(curr); }
+                    { newResult.Add(curr); }
                 }
             }
-            n -= size;
+            result = newResult;
         }
         if(result.Count == 0)
         { result.Add(0); }
