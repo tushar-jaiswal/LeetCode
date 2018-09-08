@@ -21,6 +21,8 @@ public class Solution
 
 		public static bool ValidTree(int n, int[,] edges)
 		{
+			if(n - 1 != edges.GetLength(0) || n == 0)
+			{ return false; }
 			Dictionary<int, List<int>> graph = new Dictionary<int, List<int>>();
 			for (int i = 0; i < edges.GetLength(0); i++)
 			{

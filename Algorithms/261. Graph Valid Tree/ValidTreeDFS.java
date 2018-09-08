@@ -22,6 +22,8 @@ public class Solution {
 	
 	public static boolean validTree(int n, int[][] edges)	
 	{
+		if(n - 1 != edges.length || n == 0)
+		{ return false; }
 		HashMap<Integer, List<Integer>> graph = new HashMap<Integer, List<Integer>>();
 		for (int i = 0; i < edges.length; i++)
 		{
