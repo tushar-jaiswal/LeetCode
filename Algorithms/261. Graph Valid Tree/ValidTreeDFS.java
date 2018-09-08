@@ -18,6 +18,8 @@ public class Solution {
 		System.out.println(validTree(5, arr));
 		arr = new int[][] { { 0, 1 }, { 0, 2 }, { 3, 4 } };
 		System.out.println(validTree(5, arr));
+		arr = new int[][] { { 0, 0 } };
+		System.out.println(validTree(1, arr));
 	}
 	
 	public static boolean validTree(int n, int[][] edges)	

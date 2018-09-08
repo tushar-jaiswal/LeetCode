@@ -17,6 +17,8 @@ public class Solution
 			Console.WriteLine(ValidTree(5, arr));
 			arr = new int[,] { { 0, 1 }, { 0, 2 }, { 3, 4 } };
 			Console.WriteLine(ValidTree(5, arr));
+			arr = new int[,] { { 0, 0 } };
+			Console.WriteLine(ValidTree(1, arr));
 		}
 
 		public static bool ValidTree(int n, int[,] edges)
