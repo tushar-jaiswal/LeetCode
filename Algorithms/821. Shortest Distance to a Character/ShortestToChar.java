@@ -16,8 +16,6 @@ class Solution {
     public int[] shortestToChar(String S, char C) {
         int len = S.length();
         int[] result = new int[len];
-        for(int i = 0; i < len; i++)
-        { result[i] = -1; }
         Queue<Integer> queue = new LinkedList<Integer>();
         for(int i = 0; i < len; i++)
         {
@@ -26,6 +24,8 @@ class Solution {
                 result[i] = 0; 
                 queue.offer(i);
             }
+			else
+			{ result[i] = -1; }
         }
         while(!queue.isEmpty())
         {

@@ -16,8 +16,6 @@ public class Solution {
     public int[] ShortestToChar(string S, char C) {
         int len = S.Length;
         int[] result = new int[len];
-        for(int i = 0; i < len; i++)
-        { result[i] = -1; }
         Queue<int> queue = new Queue<int>();
         for(int i = 0; i < len; i++)
         {
@@ -26,6 +24,8 @@ public class Solution {
                 result[i] = 0; 
                 queue.Enqueue(i);
             }
+			else
+			{ result[i] = -1; }
         }
         while(queue.Count != 0)
         {
