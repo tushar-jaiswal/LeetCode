@@ -26,15 +26,19 @@ public class Solution
 			if (n - 1 != edges.GetLength(0) || n == 0)
 			{ return false; }
 			int[] parent = new int[n];
+			int[] rank = new int[n];
 			for(int i = 0; i < n; i++)
-			{ parent[i] = -1; }
+			{
+				parent[i] = -1;
+				rank[i] = 0;
+			}
 			for (int i = 0; i < edges.GetLength(0); i++)
 			{
 				int x = Find(parent, edges[i, 0]);
 				int y = Find(parent, edges[i, 1]);
 				if(x == y)
 				{ return false; }
-				Union(parent, x, y);
+				Union(parent, rank, x, y);
 			}
 			return true;
 		}
@@ -43,13 +47,28 @@ public class Solution
 		{
 			if(parent[node] == -1)
 			{ return node; }
-			return Find(parent, parent[node]);
+			parent[node] = Find(parent, parent[node]);
+			return parent[node];
 		}
 
-		public static void Union(int[] parent, int x, int y)
+		public static void Union(int[] parent, int[] rank, int x, int y)
 		{
 			int xParent = Find(parent, x);
 			int yParent = Find(parent, y);
-			parent[xParent] = yParent;
+			if(rank[xParent] < rank[yParent])
+			{
+				parent[xParent] = yParent;
+				rank[yParent] += rank[xParent];
+			}
+			else if (rank[yParent] < rank[xParent])
+			{
+				parent[yParent] = xParent;
+				rank[xParent] += rank[yParent];
+			}
+			else
+			{
+				parent[yParent] = xParent;
+				rank[xParent]++;
+			}
 		}
 	}
