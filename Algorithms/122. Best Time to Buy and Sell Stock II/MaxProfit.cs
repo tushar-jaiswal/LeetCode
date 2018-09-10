@@ -27,7 +27,7 @@ public class Solution {
             else 
             {
                 min = i;
-                if(currentProfit != -1 && currentProfit > profit)
+                if(currentProfit != -1)
                 {
                     totalProfit += currentProfit;
                     currentProfit = -1;
