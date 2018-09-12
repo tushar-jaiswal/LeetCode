@@ -51,7 +51,7 @@ class Solution {
         {
             for(int j = 0; j < n / 2; j++)
             {
-                { swap(matrix, new int[]{i, j}, new int[]{i, n - 1 - j}); }
+                swap(matrix, new int[]{i, j}, new int[]{i, n - 1 - j});
             }
         }
     }
