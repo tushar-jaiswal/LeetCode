@@ -19,7 +19,6 @@ The order of your output does not matter.*/
 public class Solution {
     public IList<IList<string>> GroupAnagrams(string[] strs) {
         Dictionary<string, List<string>> dict = new Dictionary<string, List<string>>();
-        IList<IList<string>> result = new List<IList<string>>();
         foreach(string str in strs)
         {
             char[] arr = str.ToArray();
@@ -29,8 +28,6 @@ public class Solution {
             { dict[sorted] = new List<string>();  }
             dict[sorted].Add(str);
         }
-        foreach(List<string> list in dict.Values)
-        { result.Add(list); }
-        return result;
+        return new List<IList<string>>(dict.Values);
     }
 }
