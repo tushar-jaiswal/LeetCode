@@ -25,9 +25,9 @@ class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> result = new ArrayList<Integer>();
         int m = matrix.length;
-        int n = matrix[0].length;
         if(m == 0)
         { return result; }
+        int n = matrix[0].length;
         int[] rowChange = {0, 1, 0, -1};
         int[] colChange = {1, 0, -1, 0};
         int changeIndex = 0;
