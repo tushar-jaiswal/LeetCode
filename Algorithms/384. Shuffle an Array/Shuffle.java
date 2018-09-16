@@ -20,22 +20,20 @@ import java.util.concurrent.ThreadLocalRandom;
 
 class Solution {
     int[] nums;
-    int[] shuffled;
     
     public Solution(int[] nums) {
         this.nums = nums;
-        shuffled = new int[nums.length];
-        System.arraycopy(nums, 0, shuffled, 0, nums.length);
     }
     
     /** Resets the array to its original configuration and return it. */
     public int[] reset() {
-        System.arraycopy(nums, 0, shuffled, 0, nums.length);
         return nums;
     }
     
     /** Returns a random shuffling of the array. */
     public int[] shuffle() {
+        int[] shuffled = new int[nums.length];
+        System.arraycopy(nums, 0, shuffled, 0, nums.length);
         for(int i = 0; i < shuffled.length; i++)
         {
             int rand = ThreadLocalRandom.current().nextInt(i, shuffled.length);
