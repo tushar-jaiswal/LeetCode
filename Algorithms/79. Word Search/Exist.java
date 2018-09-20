@@ -19,21 +19,12 @@ class Solution {
     public boolean exist(char[][] board, String word) {
         if(word.length() == 0)
         { return false; }
-        int m = board.length;
-        int n = board[0].length;
-        char[][] newBoard = new char[m][n];
-        for(int i = 0; i < m; i++)
+        for(int i = 0; i < board.length; i++)
         {
-            for(int j = 0; j < n; j++)
+            for(int j = 0; j < board[0].length; j++)
             {
-                if(board[i][j] == word.charAt(0))
-                {
-                    for(int k = 0; k < m; k++)
-                    { newBoard[k] = board[k].clone(); }
-                    newBoard[i][j] = '0';
-                    if(dfs(newBoard, word, 0, i, j))
-                    { return true; }
-                }
+                if(board[i][j] == word.charAt(0) && dfs(board, word, 0, i, j))
+                { return true; }
             }
         }
         return false;
@@ -43,26 +34,20 @@ class Solution {
     {
         if(pos + 1 == word.length())
         { return true; }
-        int m = board.length;
-        int n = board[0].length;
-        char[][] newBoard = new char[m][n];
         int[][] move = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
+        char temp = board[i][j];
+        board[i][j] = '0';
         for(int index = 0; index < 4; index++)
         {
             int x = i + move[index][0];
             int y = j + move[index][1];
-            if(x >= 0 && y >= 0 && x < m && y < n)
+            if(x >= 0 && y >= 0 && x < board.length && y < board[0].length)
             {
-                if(board[x][y] == word.charAt(pos + 1))
-                {
-                    for(int k = 0; k < m; k++)
-                    { newBoard[k] = board[k].clone(); }
-                    newBoard[x][y] = '0';
-                    if(dfs(newBoard, word, pos + 1, x, y))
-                    { return true; }
-                }
+                if(board[x][y] == word.charAt(pos + 1) && dfs(board, word, pos + 1, x, y))
+                { return true; }
             }
         }
+        board[i][j] = temp;
         return false;
     }
 }
