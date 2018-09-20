@@ -37,7 +37,7 @@ class Solution {
         int[][] move = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
         char temp = board[i][j];
         board[i][j] = '0';
-        for(int index = 0; index < 4; index++)
+        for(int index = 0; index < move.length; index++)
         {
             int x = i + move[index][0];
             int y = j + move[index][1];
