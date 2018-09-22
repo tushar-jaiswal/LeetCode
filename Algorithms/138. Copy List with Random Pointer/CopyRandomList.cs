@@ -14,28 +14,26 @@ Return a deep copy of the list.*/
  */
 public class Solution {
     public RandomListNode CopyRandomList(RandomListNode head) {
-        RandomListNode copyHead, copy, curr;
+        if(head == null)
+        { return null; }
+        RandomListNode curr;
         curr = head;
-        copyHead = new RandomListNode(0);
-        copy = copyHead;
-        Dictionary<int, RandomListNode> dict = new Dictionary<int, RandomListNode>();
+        Dictionary<RandomListNode, RandomListNode> dict = new Dictionary<RandomListNode, RandomListNode>();
         while(curr != null)
         {
-            copy.next = new RandomListNode(curr.label);
-            dict[curr.label] = copy.next;
+            dict[curr] = new RandomListNode(curr.label);
             curr = curr.next;
-            copy = copy.next;
         }
         
         curr = head;
-        copy = copyHead;
         while(curr != null)
         {
-            copy = copy.next;
+            if(curr.next != null)
+            { dict[curr].next = dict[curr.next]; }
             if(curr.random != null)
-            { copy.random = dict[curr.random.label]; }
+            { dict[curr].random = dict[curr.random]; }
             curr = curr.next;
         }        
-        return copyHead.next;
+        return dict[head];
     }
 }
