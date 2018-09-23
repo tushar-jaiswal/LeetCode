@@ -1,5 +1,5 @@
 //Author: Tushar Jaiswal
-//Creation Date: 09/22/2018
+//Creation Date: 09/23/2018
 
 /*Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
 
@@ -21,27 +21,27 @@ Example 3:
 Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
 Output: false*/
 
-class Solution {
-    public boolean wordBreak(String s, List<String> wordDict) {
-        HashSet<String> dict = new HashSet<String>(wordDict);
-        HashSet<Integer> invalidPositions = new HashSet<Integer>();
-        return canBreakFrom(0, s, dict, invalidPositions);
+public class Solution {
+    public bool WordBreak(string s, IList<string> wordDict) {
+        HashSet<string> dict = new HashSet<string>(wordDict);
+        HashSet<int> invalidPositions = new HashSet<int>();
+        return CanBreakFrom(0, s, dict, invalidPositions);
     }
     
-    public boolean canBreakFrom(int pos, String s, HashSet<String> dict, HashSet<Integer> invalidPositions)
+    public bool CanBreakFrom(int pos, string s, HashSet<string> dict, HashSet<int> invalidPositions)
     {
-        if(invalidPositions.contains(pos))
+        if(invalidPositions.Contains(pos))
         { return false; }
         StringBuilder sb = new StringBuilder();
-        for(int i = pos; i < s.length(); i++)
+        for(int i = pos; i < s.Length; i++)
         {
-            sb.append(s.charAt(i));
-            if(dict.contains(sb.toString()))
+            sb.Append(s[i]);
+            if(dict.Contains(sb.ToString()))
             {
-                if(i + 1 == s.length() || canBreakFrom(i + 1, s, dict, invalidPositions))
+                if(i + 1 == s.Length || CanBreakFrom(i + 1, s, dict, invalidPositions))
                 { return true; }
                 else
-                { invalidPositions.add(i + 1); }
+                { invalidPositions.Add(i + 1); }
             }
         }
         return false;
