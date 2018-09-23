@@ -60,7 +60,7 @@ public class LRUCache {
             dict[key] = node;
         }
         MoveToHead(node);
-        if(dict.Keys.Count > capacity)
+        if(dict.Count > capacity)
         {
             DoublyLinkedListNode removed = RemoveFromTail();
             dict.Remove(removed.key);
