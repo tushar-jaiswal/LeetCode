@@ -67,7 +67,7 @@ public class LRUCache {
         }
     }
     
-    public void RemoveFromPosition(DoublyLinkedListNode node)
+    private void RemoveFromPosition(DoublyLinkedListNode node)
     {
         DoublyLinkedListNode prev = node.prev;
         DoublyLinkedListNode next = node.next;
@@ -75,7 +75,7 @@ public class LRUCache {
         next.prev = prev;
     }
     
-    public void MoveToHead(DoublyLinkedListNode node)
+    private void MoveToHead(DoublyLinkedListNode node)
     {
         DoublyLinkedListNode temp = head.next;
         head.next = node;
@@ -84,7 +84,7 @@ public class LRUCache {
         temp.prev = node;
     }
     
-    public DoublyLinkedListNode RemoveFromTail()
+    private DoublyLinkedListNode RemoveFromTail()
     {
         DoublyLinkedListNode nodeToRemove = tail.prev;
         DoublyLinkedListNode temp = nodeToRemove.prev;
