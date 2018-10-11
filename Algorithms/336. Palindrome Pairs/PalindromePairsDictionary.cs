@@ -26,22 +26,9 @@ public class Solution {
             dict[reverse] = i;
         }
         
-        if(dict.ContainsKey(""))
-        {
-            for(int i = 0; i < words.Length; i++)
-            {
-                if(words[i].Equals(""))
-                { continue; }
-                if(IsPalindrome(words[i]))
-                {
-                    result.Add(new List<int>(new int[]{dict[""], i}));
-                }
-            }
-        }
-        
         for(int i = 0; i < words.Length; i++)
         {
-            for(int j = 0; j < words[i].Length; j++)
+            for(int j = 0; j <= words[i].Length; j++)
             {
                 string left = words[i].Substring(0, j);
                 string right = words[i].Substring(j, words[i].Length - j);
@@ -50,7 +37,7 @@ public class Solution {
                 {
                     result.Add(new List<int>(new int[]{dict[right], i}));
                 }
-                if(dict.ContainsKey(left) && IsPalindrome(right) && dict[left] != i)
+                if(dict.ContainsKey(left) && IsPalindrome(right) && dict[left] != i && right.Length != 0)
                 {
                     result.Add(new List<int>(new int[]{i, dict[left]}));
                 }

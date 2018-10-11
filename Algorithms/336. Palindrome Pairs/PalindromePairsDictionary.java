@@ -24,22 +24,9 @@ class Solution {
             map.put(reverse, i);
         }
         
-        if(map.containsKey(""))
-        {
-            for(int i = 0; i < words.length; i++)
-            {
-                if(words[i].equals(""))
-                { continue; }
-                if(isPalindrome(words[i]))
-                {
-                    result.add(Arrays.asList(map.get(""), i));
-                }
-            }
-        }
-        
         for(int i = 0; i < words.length; i++)
         {
-            for(int j = 0; j < words[i].length(); j++)
+            for(int j = 0; j <= words[i].length(); j++)
             {
                 String left = words[i].substring(0, j);
                 String right = words[i].substring(j, words[i].length());
@@ -48,7 +35,7 @@ class Solution {
                 {
                     result.add(Arrays.asList(map.get(right), i));
                 }
-                if(map.containsKey(left) && isPalindrome(right) && map.get(left) != i)
+                if(map.containsKey(left) && isPalindrome(right) && map.get(left) != i && right.length() != 0)
                 {
                     result.add(Arrays.asList(i, map.get(left)));
                 }
