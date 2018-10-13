@@ -21,7 +21,7 @@ public class Solution {
     public bool SearchMatrix(int[,] matrix, int target) {
         int m = matrix.GetLength(0);
         int n = matrix.GetLength(1);
-        if(m == 0)
+        if(matrix == null || m == 0)
         { return false; }
         int r = 0, c = n - 1;
         
