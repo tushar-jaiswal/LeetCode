@@ -19,18 +19,7 @@ class Solution {
         {
             sorted[i] = nums[i];
         }
-        Arrays.sort(sorted, new Comparator<Integer>() {
-          @Override
-            public int compare(Integer n1, Integer n2)
-            {
-                String s1 = n1.toString();
-                String s2 = n2.toString();
-                long num1 = Long.parseLong(s1 + s2);
-                long num2 = Long.parseLong(s2 + s1);
-                int result = (int)(num2 - num1);
-                return result == 0 ? 1 : result;
-            }
-        });
+        Arrays.sort(sorted, new NumberComparer());
                 
         if(sorted[0] == 0)
         { return "0"; }
@@ -40,5 +29,17 @@ class Solution {
             sb.append(num);
         }
         return sb.toString();
+    }
+    
+    private class NumberComparer implements Comparator<Integer> {
+        @Override
+        public int compare(Integer n1, Integer n2)
+        {
+            String s1 = n1.toString();
+            String s2 = n2.toString();
+            long num1 = Long.parseLong(s1 + s2);
+            long num2 = Long.parseLong(s2 + s1);
+            return num2 - num1 > 0 ? 1 : -1;
+        }
     }
 }
