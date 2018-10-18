@@ -1,7 +1,6 @@
 //Author: Tushar Jaiswal
 //Creation Date: 10/18/2018
 
-
 /*Given an unsorted array nums, reorder it such that nums[0] < nums[1] > nums[2] < nums[3]....
 
 Example 1:
