@@ -1,5 +1,5 @@
 //Author: Tushar Jaiswal
-//Creation Date: 10/29/2018
+//Creation Date: 11/01/2018
 
 /*Given a nested list of integers, implement an iterator to flatten it.
 Each element is either an integer, or a list -- whose elements may also be integers or other lists.
@@ -34,45 +34,32 @@ Explanation: By calling next repeatedly until hasNext returns false,
  * }
  */
 public class NestedIterator implements Iterator<Integer> {
-    Deque<NestedInteger> dq;
+    Deque<NestedInteger> stack;
         
     public NestedIterator(List<NestedInteger> nestedList) {
-        dq = new ArrayDeque<NestedInteger>();
-        for(NestedInteger e : nestedList)
+        stack = new ArrayDeque<NestedInteger>();
+        for(int i = nestedList.size() - 1; i >= 0; i--)
         {
-            dq.offerLast(e);
+            stack.offerFirst(nestedList.get(i));
         }
-        removeEmptyLists();
     }
 
     @Override
     public Integer next() {
-        removeEmptyLists();
-        int val = dq.pollFirst().getInteger();
-        removeEmptyLists();
-        return val;
+        return stack.pollFirst().getInteger();
     }
 
     @Override
     public boolean hasNext() {
-        return !dq.isEmpty();
-    }
-    
-    private void removeEmptyLists()
-    {
-        while(!dq.isEmpty() && !dq.peekFirst().isInteger())
+        while(!stack.isEmpty() && !stack.peekFirst().isInteger())
         {
-            List<NestedInteger> curr = dq.pollFirst().getList();
-            Deque<NestedInteger> stack = new ArrayDeque<NestedInteger>();
-            for(NestedInteger e : curr)
+            List<NestedInteger> list = stack.pollFirst().getList();
+            for(int i = list.size() - 1; i >= 0; i--)
             {
-                stack.offerFirst(e);
-            }
-            while(!stack.isEmpty())
-            {
-                dq.offerFirst(stack.pollFirst());
+                stack.offerFirst(list.get(i));
             }
         }
+        return !stack.isEmpty();
     }
 }
 
