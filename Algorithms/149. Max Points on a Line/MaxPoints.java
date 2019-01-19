@@ -64,7 +64,6 @@ class Solution {
                     y = -y;
                 }
                 Map.Entry<Integer, Integer> slope = new java.util.AbstractMap.SimpleEntry<Integer, Integer>(x, y);
-                HashSet<Point> set;
                 if(!map.containsKey(slope))
                 {
                     map.put(slope, 1);
