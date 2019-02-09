@@ -14,38 +14,38 @@ A solution set is:
   [-2,  0, 0, 2]
 ]*/
 
-public class Solution {
-    public IList<IList<int>> FourSum(int[] nums, int target) {
-        IList<IList<int>> result = new List<IList<int>>();
-        Array.Sort(nums);
-        for(int i = 0; i < nums.Length - 3; i++)
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        Arrays.sort(nums);
+        for(int i = 0; i < nums.length - 3; i++)
         {
             if(i > 0 && nums[i - 1] == nums[i])
             { continue; }
             int threeSum = target - nums[i];
-            IList<IList<int>> quadruplets = ThreeSum(nums, threeSum, i + 1, nums[i]);
-            ((List<IList<int>>)result).AddRange(quadruplets);
+            List<List<Integer>> quadruplets = ThreeSum(nums, threeSum, i + 1, nums[i]);
+            result.addAll(quadruplets);
         }
         return result;
     }
 
-    public IList<IList<int>> ThreeSum(int[] nums, int target, int start, int item)
+    public List<List<Integer>> ThreeSum(int[] nums, int target, int start, int item)
     {
-        IList<IList<int>> result = new List<IList<int>>();
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
 
-        for(int i = start; i < nums.Length - 2; i++)
+        for(int i = start; i < nums.length - 2; i++)
         {
             if(i > start && nums[i - 1] == nums[i])
             { continue; }
 
             int left = i + 1;
-            int right = nums.Length - 1;
+            int right = nums.length - 1;
             while(left < right)
             {
                 int sum = nums[i] + nums[left] + nums[right];
                 if(sum == target)
                 {
-                    result.Add(new int[]{item, nums[i], nums[left], nums[right]});
+                    result.add(Arrays.asList(item, nums[i], nums[left], nums[right]));
                     do
                     {
                         left++;
