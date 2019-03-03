@@ -36,7 +36,7 @@ public class MeetingRooms {
 		intervals2[1] = new Interval(2, 4);
 
 		System.out.println("Person can attend intervals1 meetings:" + canAttendMeetings(intervals));
-		System.out.println("Person can attend intervals1 meetings:" + canAttendMeetings(intervals2));
+		System.out.println("Person can attend intervals2 meetings:" + canAttendMeetings(intervals2));
 	}
 
 	public static boolean canAttendMeetings(Interval[] intervals) {
