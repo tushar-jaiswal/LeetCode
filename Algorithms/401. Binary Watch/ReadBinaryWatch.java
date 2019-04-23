@@ -41,7 +41,7 @@ class Solution {
         return times;
     }
 
-    public void GetCombinations(int num, List<Integer> list, int total, List<String> result, boolean isHours)
+    public void getCombinations(int num, List<Integer> list, int total, List<String> result, boolean isHours)
     {
         if(num == 0)
         {
