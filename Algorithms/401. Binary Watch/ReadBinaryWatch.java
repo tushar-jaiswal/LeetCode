@@ -21,15 +21,13 @@ class Solution {
         List<Integer> hourList = Arrays.asList(1, 2, 4, 8);
         List<Integer> minList = Arrays.asList(1, 2, 4, 8, 16, 32);
         List<String> times = new ArrayList<String>();
-        if(num > 8)
-        { return times; }
 
         for(int hourNum = Math.min(num, 3), minNum = num - hourNum; hourNum >= 0 && minNum <= 5; hourNum--, minNum++)
         {
             List<String> hours = new ArrayList<String>();
-            GetCombinations(hourNum, hourList, 0, hours, true);
+            getCombinations(hourNum, hourList, 0, hours, true);
             List<String> mins = new ArrayList<String>();
-            GetCombinations(minNum, minList, 0, mins, false);
+            getCombinations(minNum, minList, 0, mins, false);
             for(String hour : hours)
             {
                 for(String min : mins)
@@ -61,7 +59,7 @@ class Solution {
         {
             int item = newList.get(0);
             newList.remove(0);
-            GetCombinations(num - 1, newList, total + item, result, isHours);
+            getCombinations(num - 1, newList, total + item, result, isHours);
         }
     }
 }

@@ -21,8 +21,6 @@ public class Solution {
         List<int> hourList = new List<int>{1, 2, 4, 8};
         List<int> minList = new List<int>{1, 2, 4, 8, 16, 32};
         List<string> times = new List<string>();
-        if(num > 8)
-        { return times; }
 
         for(int hourNum = Math.Min(num, 3), minNum = num - hourNum; hourNum >= 0 && minNum <= 5; hourNum--, minNum++)
         {
@@ -45,13 +43,13 @@ public class Solution {
     {
         if(num == 0)
         {
-            if((isHours && total < 12) || (!isHours && total >= 10 && total <= 59))
+            if(isHours && total < 12)
             {
                 result.Add(total.ToString());
             }
-            else if (!isHours && total < 10)
+            else if (!isHours && total < 60)
             {
-                result.Add("0" + total.ToString());
+                result.Add(total.ToString("D2"));
             }
             return;
         }
