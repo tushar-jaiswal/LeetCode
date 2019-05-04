@@ -12,38 +12,22 @@ Return
 ]*/
 public class Solution {
     public List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
-        List<Integer> previous = new ArrayList<Integer>(){};
-        previous.add(1);
-        previous.add(1);
-        
-        if(numRows >= 1)
-        { 
-            List<Integer> first = new ArrayList<Integer>(){};
-            first.add(1);
-            result.add(first);
-        }
-        if(numRows >= 2)
-        { 
-            result.add(previous); 
-        }
-        
-        if(numRows >= 3)
-        {
-            for(int i = 2; i < numRows; i++)
-            {
-                List<Integer> current = new ArrayList<Integer>();
-                current.add(1);
-                for(int j = 1; j < previous.size(); j++)
-                {
-                    current.add(previous.get(j-1) + previous.get(j));
-                }
-                current.add(1);
-                result.add(current);
-                previous = current;
-            }
-        }
-        
-        return result;
+      List<List<Integer>> result = new ArrayList<List<Integer>>();
+      for(int i = 0; i < numRows; i++)
+      {
+          List<Integer> curr = new ArrayList<Integer>();
+          for(int j = 0; j <= i; j++)
+          {
+              if(j == 0 || j == i)
+              { curr.add(1); }
+              else
+              {
+                  List<Integer> prev = result.get(i - 1);
+                  curr.add(prev.get(j - 1) + prev.get(j));
+              }
+          }
+          result.add(curr);
+      }
+      return result;
     }
 }
