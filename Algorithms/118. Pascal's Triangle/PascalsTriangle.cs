@@ -12,30 +12,22 @@ Return
 ]*/
 public class Solution {
     public IList<IList<int>> Generate(int numRows) {
-        List<IList<int>> result = new List<IList<int>>();
-        List<int> previous = new List<int>(){1,1};
-        
-        if(numRows >= 1)
-        { result.Add(new List<int>(){1}); }
-        if(numRows >= 2)
-        { result.Add(previous); }
-        
-        if(numRows >= 3)
-        {
-            for(int i = 2; i < numRows; i++)
-            {
-                List<int> current = new List<int>();
-                current.Add(1);
-                for(int j = 1; j < previous.Count; j++)
-                {
-                    current.Add(previous[j-1] + previous[j]);
-                }
-                current.Add(1);
-                result.Add(current);
-                previous = current;
-            }
-        }
-        
-        return result;
+      List<IList<int>> result = new List<IList<int>>();
+      for(int i = 0; i < numRows; i++)
+      {
+          List<int> curr = new List<int>();
+          for(int j = 0; j <= i; j++)
+          {
+              if(j == 0 || j == i)
+              { curr.Add(1); }
+              else
+              {
+                  List<int> prev = (List<int>)result[i - 1];
+                  curr.Add(prev[j - 1] + prev[j]);
+              }
+          }
+          result.Add(curr);
+      }
+      return result;
     }
 }
