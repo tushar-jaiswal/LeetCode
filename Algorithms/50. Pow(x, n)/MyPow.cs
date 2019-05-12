@@ -16,25 +16,24 @@ Input: 2.00000, -2
 Output: 0.25000
 Explanation: 2-2 = 1/22 = 1/4 = 0.25
 
-Note: 
+Note:
 -100.0 < x < 100.0
 n is a 32-bit signed integer, within the range [-231, 231 - 1]*/
 
 public class Solution {
     public double MyPow(double x, int n) {
         long nn = n;
-        return MyPow(x, nn);
-    }
-    
-    private double MyPow(double x, long n) {    
-        if(n == 0)
-        { return 1; }
-        else if(n < 0)
+        if(nn < 0)
         {
             x = 1 / x;
-            n = -n;
+            nn = -nn;
         }
-            
+        return MyPow(x, nn);
+    }
+
+    private double MyPow(double x, long n) {
+        if(n == 0)
+        { return 1; }    
         return (n % 2 == 0) ? MyPow(x * x, n / 2) : x * MyPow(x * x, n / 2);
     }
 }
