@@ -48,7 +48,7 @@ class Solution {
         if(!words.contains(endWord))
         { return -1; }
         Queue<String> queue = new LinkedList<String>();
-        queue.add(beginWord);
+        queue.offer(beginWord);
         int shortestDistance = 1;
         distance.put(beginWord, shortestDistance);
         boolean foundShortest = false;
