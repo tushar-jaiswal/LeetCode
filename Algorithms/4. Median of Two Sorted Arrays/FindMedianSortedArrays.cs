@@ -18,7 +18,7 @@ The median is (2 + 3)/2 = 2.5*/
 public class Solution {
     public double FindMedianSortedArrays(int[] nums1, int[] nums2) {
         if(nums1 == null || nums2 == null)
-        { throw new ArgumentNullException(); }
+        { throw new ArgumentNullException("Input argument can't be null"); }
         int len1 = nums1.Length;
         int len2 = nums2.Length;
         if(len1 > len2)
