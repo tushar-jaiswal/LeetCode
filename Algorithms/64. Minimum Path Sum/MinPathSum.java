@@ -15,12 +15,11 @@ Input:
 Output: 7
 Explanation: Because the path 1→3→1→1→1 minimizes the sum.*/
 
-/*Runtime Complexity: O(mn)
-Space Complexity: O(mn)*/
-
 class Solution {
     public int minPathSum(int[][] grid) {
-        if(grid.length == 0 || grid[0].length == 0)
+        int m = grid.length;
+        int n = grid[0].length;
+        if(m == 0 || n == 0)
         { return -1; }
         int[][] sum = new int[grid.length][grid[0].length];
         for (int[] row: sum)
@@ -30,12 +29,14 @@ class Solution {
 
     public int dfs(int[][] grid, int row, int col, int[][] sum)
     {
-        if(row < grid.length && col < grid[0].length)
+        int m = grid.length;
+        int n = grid[0].length;
+        if(row < m && col < n)
         {
             if(sum[row][col] != -1)
             { return sum[row][col]; }
 
-            if(row == grid.length - 1 && col == grid[0].length - 1)
+            if(row == m - 1 && col == n - 1)
             { sum[row][col] = grid[row][col]; }
             else
             { sum[row][col] = grid[row][col] + Math.min(dfs(grid, row + 1, col, sum), dfs(grid, row, col + 1, sum)); }
