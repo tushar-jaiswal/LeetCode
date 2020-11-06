@@ -1,17 +1,33 @@
 //Author: Tushar Jaiswal
-//Creation Date: 02/11/2018
+//Creation Date: 11/06/2020
 
-/*Given a binary tree, return the inorder traversal of its nodes' values.
-For example:
-Given binary tree [1,null,2,3],
-   1
-    \
-     2
-    /
-   3
-return [1,3,2].
+/*Given the root of a binary tree, return the inorder traversal of its nodes' values.
 
-Note: Recursive solution is trivial, could you do it iteratively?*/
+Example 1:
+Input: root = [1,null,2,3]
+Output: [1,3,2]
+
+Example 2:
+Input: root = []
+Output: []
+
+Example 3:
+Input: root = [1]
+Output: [1]
+
+Example 4:
+Input: root = [1,2]
+Output: [2,1]
+
+Example 5:
+Input: root = [1,null,2]
+Output: [1,2]
+
+Constraints:
+    The number of nodes in the tree is in the range [0, 100].
+    -100 <= Node.val <= 100
+
+Follow up: Recursive solution is trivial, could you do it iteratively?*/
 
 /**
  * Definition for a binary tree node.
@@ -19,27 +35,24 @@ Note: Recursive solution is trivial, could you do it iteratively?*/
  *     int val;
  *     TreeNode left;
  *     TreeNode right;
- *     TreeNode(int x) { val = x; }
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
  * }
  */
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> list = new ArrayList<Integer>();
-        traverseInorder(root, list);
-        return list;
-    }
-    
-    public void traverseInorder(TreeNode node, List<Integer> list)
-    {
-        if(node != null)
-        {
-            if(node.left != null) 
-            { traverseInorder(node.left, list); }
-            
-            list.add(node.val);
-            
-            if(node.right != null)
-            { traverseInorder(node.right, list); }
+        var list = new ArrayList<Integer>();
+
+        if (root != null) {
+            list.addAll(inorderTraversal(root.left));
+            list.add(root.val);
+            list.addAll(inorderTraversal(root.right));
         }
+        return list;
     }
 }
