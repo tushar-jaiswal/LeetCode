@@ -11,7 +11,7 @@ Note:
 * If there is no such window in S that covers all characters in T, return the empty string "".
 * If there is such window, you are guaranteed that there will always be only one unique minimum window in S.*/
 
-/*Runtime Complexity: O(number of characters in s)
+/*Runtime Complexity: O(|s| + |t|)
 Space Complexity: O(number of characters in t)*/
 
 class Solution {
@@ -31,7 +31,7 @@ class Solution {
         HashMap<Character, Integer> charsToMatch = new HashMap<>(charFreq);
         HashMap<Character, Integer> excessChars = new HashMap<>();
 
-        String minWindow = null;
+        int[] minWindow = {-1, -1};
         int left = -1;
         int right = -1;
 
@@ -47,7 +47,7 @@ class Solution {
                         charsToMatch.remove(c);
                         if(charsToMatch.size() == 0) {
                             right = i;
-                            minWindow = s.substring(left, right + 1);
+                            minWindow = getWindow(left, right);
                             break;
                         }
                     }
@@ -56,7 +56,7 @@ class Solution {
                 }
             }
         }
-        if (minWindow == null) {
+        if (minWindow[0] == -1) {
             return "";
         }
 
@@ -80,17 +80,21 @@ class Solution {
                 } while (right < s.length() && newChar != c);
             } else if (charFreq.containsKey(c) && excessChars.containsKey(c)) {
                 left++;
-                minWindow = minWindow.length() > (right - left + 1) ? s.substring(left, right + 1) : minWindow;
+                minWindow = (minWindow[1] - minWindow[0]) > (right - left) ? getWindow(left, right) : minWindow;
                 excessChars.replace(c, excessChars.get(c) - 1);
                 if (excessChars.get(c) == 0) {
                     excessChars.remove(c);
                 }
             } else {
                 left++;
-                minWindow = minWindow.length() > (right - left + 1) ? s.substring(left, right + 1) : minWindow;
+                minWindow = (minWindow[1] - minWindow[0]) > (right - left) ? getWindow(left, right) : minWindow;
             }
         }
 
-        return minWindow;
+        return s.substring(minWindow[0], minWindow[1] + 1);
+    }
+
+    private int[] getWindow(int left, int right) {
+        return new int[]{left, right};
     }
 }
