@@ -25,49 +25,29 @@ Note:
     -10000 < points[i][1] < 10000*/
 
 /*Runtime Complexity: O(number of points * log(K))
-Space Complexity: O(log(K))*/
+Space Complexity: O(K)*/
 
 class Solution {
     public int[][] kClosest(int[][] points, int K) {
         int[][] result = new int[K][];
-        var priorityQueue = new PriorityQueue<Point>();
+        var priorityQueue = new PriorityQueue<int[]>(
+            new Comparator<int[]>(){
+                @Override
+                public int compare(int[] p1, int[] p2) {
+                    return (p2[0] * p2[0] + p2[1] * p2[1]) - (p1[0] * p1[0] + p1[1] * p1[1]);
+                }
+        });
 
         for (int[] point : points) {
-            priorityQueue.add(new Point(point));
+            priorityQueue.add(point);
             if (priorityQueue.size() > K) {
                 priorityQueue.remove();
             }
         }
 
-        int i = 0;
-        while (priorityQueue.size() != 0) {
-            result[i++] = priorityQueue.remove().coordinates;
+        while (K != 0) {
+            result[--K] = priorityQueue.remove();
         }
         return result;
-    }
-}
-
-class Point implements Comparable<Point> {
-    int[] coordinates;
-    Double originDist;
-
-    public Point(int[] coordinates) {
-        this.coordinates = coordinates;
-        originDist = getDistanceFromOrigin(coordinates);
-    }
-
-    private double getDistanceFromOrigin(int[] coordinates) {
-        if (coordinates.length != 2) {
-            throw new IllegalArgumentException("Point must have 2D cartesian coordinates.");
-        }
-        int x = coordinates[0];
-        int y = coordinates[1];
-
-        return Math.sqrt(x * x + y * y);
-    }
-
-    @Override
-    public int compareTo(Point p) {
-        return p.originDist.compareTo(this.originDist);
     }
 }
