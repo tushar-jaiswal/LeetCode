@@ -29,20 +29,11 @@ class Solution {
     public int maxAreaOfIsland(int[][] grid) {
         int maxArea = 0;
 
-        var onePositions = new ArrayList<int[]>();
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
                 if (grid[i][j] == 1) {
-                    onePositions.add(new int[]{i, j});
+                    maxArea = Math.max(maxArea, bfs(grid, i, j));
                 }
-            }
-        }
-
-        for (int[] position : onePositions) {
-            int x = position[0];
-            int y = position[1];
-            if (grid[x][y] == 1) {
-                maxArea = Math.max(maxArea, bfs(grid, x, y));
             }
         }
 
