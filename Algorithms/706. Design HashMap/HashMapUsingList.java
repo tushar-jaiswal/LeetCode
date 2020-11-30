@@ -25,6 +25,9 @@ Note:
     Please do not use the built-in HashMap library.
 */
 
+/*Runtime Complexity: O(1) on average for all operations.
+Space Complexity: O(n)*/
+
 class MyHashMap {
 
     List<Pair<Integer, Integer>> [] buckets;
