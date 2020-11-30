@@ -25,7 +25,7 @@ Note:
     Please do not use the built-in HashSet library.
 */
 
-/*Runtime Complexity: O(1) for all operations.
+/*Runtime Complexity: O(1) on average for all operations.
 Space Complexity: O(n)*/
 
 class MyHashSet {
