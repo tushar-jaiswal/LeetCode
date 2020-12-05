@@ -48,7 +48,7 @@ Constraints:
  * };
  */
 
-/*Runtime Complexity: O((num of rows) * log(num of columns)) on average for all operations.
+/*Runtime Complexity: O((num of rows) * log(num of columns)).
 Space Complexity: O(1)*/
 
 class Solution {
