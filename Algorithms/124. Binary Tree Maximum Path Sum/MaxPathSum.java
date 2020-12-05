@@ -42,7 +42,7 @@ class Solution {
             return Integer.MIN_VALUE;
         }
         Sum sum = helper(root);
-        return Math.max(sum.pathSum, sum.maxSum);
+        return sum.maxSum;
     }
 
     private Sum helper(TreeNode root) {
