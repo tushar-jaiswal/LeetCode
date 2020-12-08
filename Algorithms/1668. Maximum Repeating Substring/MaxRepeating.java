@@ -25,18 +25,16 @@ Constraints:
     1 <= word.length <= 100
     sequence and word contains only lowercase English letters.*/
 
-/*Runtime Complexity: O(length of sequence * length of word)
+/*Runtime Complexity: O(length of sequence * (length of sequence - length of word + 1))
 Space Complexity: O(1)*/
 
 class Solution {
     public int maxRepeating(String sequence, String word) {
         int maxCount = 0;
-        boolean sequenceStarted = false;
         int count = 0;
         int wordPos = 0;
         for (int i = 0; i < sequence.length(); i++) {
             if (sequence.charAt(i) == word.charAt(wordPos)) {
-                sequenceStarted = true;
                 if(wordPos == word.length() - 1) {
                     wordPos = 0;
                     count++;
@@ -45,11 +43,10 @@ class Solution {
                     wordPos++;
                 }
             } else {
-                sequenceStarted = false;
-                count = 0;
                 if(wordPos != 0) {
-                    i = i - wordPos;
+                    i = i - wordPos * count - wordPos;
                 }
+                count = 0;
                 wordPos = 0;
             }
         }
