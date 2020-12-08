@@ -44,7 +44,7 @@ class Solution {
                 }
             } else {
                 if(wordPos != 0) {
-                    i = i - wordPos * count - wordPos;
+                    i = i - word.length() * count - wordPos;
                 }
                 count = 0;
                 wordPos = 0;
