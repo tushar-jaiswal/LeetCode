@@ -25,7 +25,7 @@ Follow up:
 */
 
 /*Runtime Complexity: addNum is O(log(n)) and findMedian is O(1)
-Space Complexity: O(log(n))*/
+Space Complexity: O(n)*/
 
 class MedianFinder {
     PriorityQueue<Integer> minPQ;

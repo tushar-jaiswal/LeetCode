@@ -30,7 +30,7 @@ Answers within 10^-5 of the actual value will be accepted as correct.
 */
 
 /*Runtime Complexity: O(nlog(k))
-Space Complexity: O(log(k))*/
+Space Complexity: O(k)*/
 
 class Solution {
     public double[] medianSlidingWindow(int[] nums, int k) {
