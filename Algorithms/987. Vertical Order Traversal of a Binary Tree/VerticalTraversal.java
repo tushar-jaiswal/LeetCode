@@ -52,7 +52,7 @@ class Solution {
         var result = new ArrayList<List<Integer>>();
 
         var colArrayMap = new HashMap<Integer, List<Integer>>();
-        int minCol = 1;
+        int minCol = 1; // In case root is null, this ensures we don't get inside the loop in the end
         int maxCol = 0;
 
         var levelNodesQueue = new ArrayDeque<TreeNode>();
