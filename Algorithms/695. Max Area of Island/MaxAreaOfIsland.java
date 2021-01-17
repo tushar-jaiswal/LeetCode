@@ -23,7 +23,7 @@ Given the above grid, return 0.
 Note: The length of each dimension in the given grid does not exceed 50.*/
 
 /*Runtime Complexity: O(size of grid)
-Space Complexity: O(1)*/
+Space Complexity: O(size of grid) for the recursion stack*/
 
 class Solution {
     public int maxAreaOfIsland(int[][] grid) {
@@ -32,7 +32,7 @@ class Solution {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
                 if (grid[i][j] == 1) {
-                    maxArea = Math.max(maxArea, bfs(grid, i, j));
+                    maxArea = Math.max(maxArea, dfs(grid, i, j));
                 }
             }
         }
@@ -40,7 +40,7 @@ class Solution {
         return maxArea;
     }
 
-    private int bfs(int[][] grid, int x, int y) {
+    private int dfs(int[][] grid, int x, int y) {
         if (x < 0 || y < 0 || x >= grid.length || y >= grid[0].length) {
             return 0;
         }
@@ -48,10 +48,10 @@ class Solution {
         if (grid[x][y] == 1) {
             area = 1;
             grid[x][y] = -1;
-            area += bfs(grid, x + 1, y);
-            area += bfs(grid, x, y + 1);
-            area += bfs(grid, x - 1, y);
-            area += bfs(grid, x, y - 1);
+            area += dfs(grid, x + 1, y);
+            area += dfs(grid, x, y + 1);
+            area += dfs(grid, x - 1, y);
+            area += dfs(grid, x, y - 1);
 
         }
 
