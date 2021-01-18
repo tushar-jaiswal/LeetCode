@@ -21,6 +21,10 @@ Example 3:
 Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
 Output: false*/
 
+/*Runtime Complexity: O(n^3) where n is the length of the string s.
+For every starting index, the search can continue till the end of the given string giving n^2. Substring operation is also n. In total, we have O(n^3).
+Space Complexity: O(max(n, size of wordDict)) */
+
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         HashSet<String> dict = new HashSet<String>(wordDict);

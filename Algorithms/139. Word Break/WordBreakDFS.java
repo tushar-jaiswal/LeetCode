@@ -21,13 +21,17 @@ Example 3:
 Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
 Output: false*/
 
+/*Runtime Complexity: O(n^3) where n is the length of the string s.
+Size of recursion tree can go up to n^2. StringBuilder's toString operation is also n. In total, we have O(n^3).
+Space Complexity: O(max(n, size of wordDict)) */
+
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         HashSet<String> dict = new HashSet<String>(wordDict);
         HashSet<Integer> invalidPositions = new HashSet<Integer>();
         return canBreakFrom(0, s, dict, invalidPositions);
     }
-    
+
     public boolean canBreakFrom(int pos, String s, HashSet<String> dict, HashSet<Integer> invalidPositions)
     {
         if(invalidPositions.contains(pos))

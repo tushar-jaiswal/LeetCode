@@ -21,13 +21,17 @@ Example 3:
 Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
 Output: false*/
 
+/*Runtime Complexity: O(n^3) where n is the length of the string s.
+Size of recursion tree can go up to n^2. StringBuilder's ToString operation is also n. In total, we have O(n^3).
+Space Complexity: O(max(n, size of wordDict)) */
+
 public class Solution {
     public bool WordBreak(string s, IList<string> wordDict) {
         HashSet<string> dict = new HashSet<string>(wordDict);
         HashSet<int> invalidPositions = new HashSet<int>();
         return CanBreakFrom(0, s, dict, invalidPositions);
     }
-    
+
     public bool CanBreakFrom(int pos, string s, HashSet<string> dict, HashSet<int> invalidPositions)
     {
         if(invalidPositions.Contains(pos))
