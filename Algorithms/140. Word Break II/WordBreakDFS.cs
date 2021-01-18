@@ -42,13 +42,11 @@ public class Solution {
         HashSet<int> validPositions = new HashSet<int>();
         IList<string> result = new List<string>();
         canBreakFrom(0, s, dict, invalidPositions, validPositions, new StringBuilder(), result);
-        return result; 
+        return result;
     }
-    
+
     public bool canBreakFrom(int pos, string s, HashSet<string> dict, HashSet<int> invalidPositions, HashSet<int> validPositions, StringBuilder curr, IList<string> result)
     {
-        if(invalidPositions.Contains(pos))
-        { return false; }
         for(int i = pos + 1; i <= s.Length; i++)
         {
             string word = s.Substring(pos, i - pos);
@@ -58,14 +56,14 @@ public class Solution {
                 newCurr.Append(" ");
                 newCurr.Append(word);
                 if(i == s.Length)
-                { 
-                    result.Add(newCurr.ToString().Substring(1, newCurr.Length - 1)); 
+                {
+                    result.Add(newCurr.ToString().Substring(1, newCurr.Length - 1));
                     validPositions.Add(pos);
                     return true;
                 }
-                else if(canBreakFrom(i, s, dict, invalidPositions, validPositions, newCurr, result))
+                else if(!invalidPositions.Contains(i) && canBreakFrom(i, s, dict, invalidPositions, validPositions, newCurr, result))
                 { validPositions.Add(pos); }
-                else if(!validPositions.Contains(i))
+                else if(!invalidPositions.Contains(i))
                 { invalidPositions.Add(i); }
             }
         }

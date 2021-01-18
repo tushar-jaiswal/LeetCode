@@ -42,13 +42,11 @@ class Solution {
         HashSet<Integer> validPositions = new HashSet<Integer>();
         List<String> result = new ArrayList<String>();
         canBreakFrom(0, s, dict, invalidPositions, validPositions, new StringBuilder(), result);
-        return result; 
+        return result;
     }
-    
+
     public boolean canBreakFrom(int pos, String s, HashSet<String> dict, HashSet<Integer> invalidPositions, HashSet<Integer> validPositions, StringBuilder curr, List<String> result)
     {
-        if(invalidPositions.contains(pos))
-        { return false; }
         for(int i = pos + 1; i <= s.length(); i++)
         {
             String word = s.substring(pos, i);
@@ -58,14 +56,14 @@ class Solution {
                 newCurr.append(" ");
                 newCurr.append(word);
                 if(i == s.length())
-                { 
-                    result.add(newCurr.toString().substring(1, newCurr.length())); 
+                {
+                    result.add(newCurr.toString().substring(1, newCurr.length()));
                     validPositions.add(pos);
                     return true;
                 }
-                else if(canBreakFrom(i, s, dict, invalidPositions, validPositions, newCurr, result))
+                else if(!invalidPositions.contains(i) && canBreakFrom(i, s, dict, invalidPositions, validPositions, newCurr, result))
                 { validPositions.add(pos); }
-                else if(!validPositions.contains(i))
+                else if(!invalidPositions.contains(i))
                 { invalidPositions.add(i); }
             }
         }
