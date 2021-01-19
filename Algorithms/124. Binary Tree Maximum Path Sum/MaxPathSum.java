@@ -19,7 +19,7 @@ Constraints:
 */
 
 /*Runtime Complexity: O(number of nodes in tree)
-Space Complexity: O(1)*/
+Space Complexity: O(height of tree) to keep the recursion stack*/
 
 /**
  * Definition for a binary tree node.
