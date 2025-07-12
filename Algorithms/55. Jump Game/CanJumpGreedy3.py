@@ -22,14 +22,14 @@
 
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        maxJumpIndex = 0
+        max_jump_index = 0
 
         for i in range(len(nums)):
-            if maxJumpIndex < i + nums[i]:
-                maxJumpIndex = i + nums[i]
-            if maxJumpIndex >= len(nums) - 1:
+            if max_jump_index < i + nums[i]:
+                max_jump_index = i + nums[i]
+            if max_jump_index >= len(nums) - 1:
                 return True
-            if maxJumpIndex == i:
+            if max_jump_index == i:
                 return False
         
         return False
