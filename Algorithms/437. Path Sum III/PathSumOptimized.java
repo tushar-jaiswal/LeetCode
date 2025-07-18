@@ -58,7 +58,7 @@ public class Solution {
             count += preorderTraversal(node.left, target, currSum, prefixSumFreqMap);
             count += preorderTraversal(node.right, target, currSum, prefixSumFreqMap);
 
-            prefixSumFreqMap.put(currSum, prefixSumFreqMap.getOrDefault(currSum, 0) - 1);
+            prefixSumFreqMap.put(currSum, prefixSumFreqMap.get(currSum) - 1);
         }
 
         return count;
