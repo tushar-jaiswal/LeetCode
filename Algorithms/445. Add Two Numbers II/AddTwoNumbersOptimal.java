@@ -11,7 +11,7 @@ Example:
 Input: (7 -> 2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 8 -> 0 -> 7*/
 
-/*Runtime Complexity: O(len(l1) + log(len(l2)))
+/*Runtime Complexity: O(len(l1) + len(l2))
 Space Complexity: O(1)*/
 
 /**
