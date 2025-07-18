@@ -35,10 +35,10 @@ Space Complexity: O(number of nodes in the tree)*/
  */
 public class Solution {
     public int pathSum(TreeNode root, int sum) {
-        return preorderTraversal(root, sum, 0, new HashMap());
+        return preorderTraversal(root, sum, 0L, new HashMap<Long, Integer>());
     }
 
-    public int preorderTraversal(TreeNode node, int target, int currSum, HashMap<Integer, Integer> prefixSumFreqMap) {
+    public int preorderTraversal(TreeNode node, int target, long currSum, HashMap<Long, Integer> prefixSumFreqMap) {
         int count = 0;
 
         if (node != null) {
