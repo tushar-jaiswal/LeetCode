@@ -89,7 +89,7 @@ class Cell:
         self.row = row
         self.col = col
         self.val = val
-        self.cells_where_in_formula = formula_cells
+        self.cells_where_in_formula = formula_cells # must be a list as the same cell can be present multiple times in formula
         self.formula = formula
 
 class Excel:
