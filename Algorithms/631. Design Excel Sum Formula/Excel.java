@@ -95,7 +95,7 @@ class Cell {
         this.row = row;
         this.col = col;
         this.val = val;
-        this.cellsWhereInFormula = new ArrayList<>();
+        this.cellsWhereInFormula = new ArrayList<>(); // must be a list as the same cell can be present multiple times in formula
         this.formula = null;
     }
 }
