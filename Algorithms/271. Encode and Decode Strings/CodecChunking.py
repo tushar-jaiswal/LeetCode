@@ -65,9 +65,6 @@ class Codec:
         """Decodes a single string to a list of strings.
         """
         result = []
-
-        current_string = ""
-
         i = 0
         while i < len(s):
             delimiter_index = s.find(".", i)
@@ -75,6 +72,5 @@ class Codec:
             i = delimiter_index + 1 + word_length
             current_string = s[delimiter_index + 1:i]
             result.append(current_string)
-            current_string = ""
 
         return result
