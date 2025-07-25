@@ -50,3 +50,45 @@
 //  * Both encoding and decoding processes iterate over every character in the input, thus they both have a linear time complexity of O(n).
 // Space Complexity: O(k) where k is the number of words
 //  * We don't count the output as part of the space complexity, but for each word, we are using some space for the escape character and delimiter.
+
+public class Codec {
+
+    // Encodes a list of strings to a single string.
+    public String encode(List<String> strs) {
+        StringBuilder encoding = new StringBuilder();
+
+        for (String s : strs) {
+            encoding.append(s.replace("/", "//")).append("/.");
+        }
+        return encoding.toString();
+    }
+
+    // Decodes a single string to a list of strings.
+    public List<String> decode(String s) {
+        List<String> result = new ArrayList<>();
+
+        StringBuilder current = new StringBuilder();
+
+        int i = 0;
+        while (i < s.length()) {
+            if (s.charAt(i) == '/') {
+                if (s.charAt(i + 1) == '/') {
+                    current.append("/");
+                } else if (s.charAt(i + 1) == '.') {
+                    result.add(current.toString());
+                    current.setLength(0);
+                }
+                i += 2;
+            } else {
+                current.append(s.charAt(i));
+                i++;
+            }
+        }
+
+        return result;
+    }
+}
+
+// Your Codec object will be instantiated and called as such:
+// Codec codec = new Codec();
+// codec.decode(codec.encode(strs));
