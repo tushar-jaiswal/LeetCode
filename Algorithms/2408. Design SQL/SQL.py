@@ -1,6 +1,9 @@
-# You are given two string arrays, names and columns, both of size n. The ith table is represented by the name names[i] and contains columns[i] number of columns.
+# Author: Tushar Jaiswal
+# Creation Date: 2025-07-25
 
 # Problem Source: https://leetcode.com/problems/design-sql/
+
+# You are given two string arrays, names and columns, both of size n. The ith table is represented by the name names[i] and contains columns[i] number of columns.
 
 # You need to implement a class that supports the following operations:
 #     Insert a row in a specific table with an id assigned using an auto-increment method, where the id of the first inserted row is 1, and the id of each new row inserted into the same table is one greater than the id of the last inserted row, even if the last row was removed.
