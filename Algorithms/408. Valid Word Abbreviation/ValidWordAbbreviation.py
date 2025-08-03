@@ -38,6 +38,9 @@
 # abbr consists of lowercase English letters and digits.
 # All the integers in abbr will fit in a 32-bit integer.
 
+# Runtime Complexity: O(n) where n is length of word
+# Space Complexity: O(1)
+
 class Solution:
     def validWordAbbreviation(self, word: str, abbr: str) -> bool:
         i = j = 0
