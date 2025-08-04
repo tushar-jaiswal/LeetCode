@@ -41,22 +41,16 @@ class Solution:
                 continue
             elif s[i] == '/':
                 val1 = stack.pop()
-                sign1 = 1
-                if val1 < 0:
-                    sign1 = -1
-                    val1 = -1 * val1
-                val2, i, sign2 = self.get_val(s, i + 1)
-                # Multiply sign separately else // will round down i.e. -3//2= -2
-                print(val1, sign1, val2, sign2)
-                floor_val = val1 // val2
-                stack.append(sign1 * sign2 * floor_val)
+                val2, i= self.get_val(s, i + 1)
+                # Use int() instead of // (which does -3//2= -2) to round towards 0 
+                stack.append(int(val1 / val2))
             elif s[i] == '*':
                 val1 = stack.pop()
-                val2, i, sign = self.get_val(s, i + 1)
-                stack.append(sign * val1 * val2)
+                val2, i = self.get_val(s, i + 1)
+                stack.append(val1 * val2)
             else: # int
-                val, i, sign = self.get_val(s, i)
-                stack.append(sign * val)
+                val, i = self.get_val(s, i)
+                stack.append(val)
         
         result = 0
         for num in stack:
@@ -77,4 +71,4 @@ class Solution:
         while i < len(s) and 48 <= ord(s[i]) <= 57:
             num += s[i]
             i += 1
-        return (int(num), i, sign)
+        return (sign * int(num), i)
