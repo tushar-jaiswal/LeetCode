@@ -40,10 +40,7 @@
 
 class SparseVector:
     def __init__(self, nums: List[int]):
-        self.pairs = []
-        for i, val in enumerate(nums):
-            if val != 0:
-                self.pairs.append((i, val))
+        self.pairs = [(i, num) for i, num in enumerate(nums) if num != 0]
 
     # Return the dotProduct of two sparse vectors
     def dotProduct(self, vec: 'SparseVector') -> int:
