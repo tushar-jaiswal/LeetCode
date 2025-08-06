@@ -36,7 +36,6 @@ class Solution:
 
         while left <= right:
             mid = left + (right - left) // 2
-            print(mid)
             if (mid - 1 >= 0 and mid + 1 < len(nums) and nums[mid - 1] < nums[mid] > nums[mid + 1]) or (mid == len(nums) - 1 and nums[mid] > nums[mid - 1]):
                 return mid
             elif mid + 1 < len(nums) and nums[mid] < nums[mid + 1]:
